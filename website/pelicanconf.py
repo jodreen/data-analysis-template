@@ -10,7 +10,7 @@ import os
 AUTHOR = u'Jordeen Chang'
 SITENAME = u'Data Analysis Project'
 SITESUBTITLE = u'Template using the iPython notebook'
-GITHUB_REPOSITORY_URL = u'https://github.com/jodreen/data-analysis-template'
+GITHUB_REPOSITORY_URL = u'https://github.com/jodreen/googletrends-stocks'
 
 ###################################################
 # FINER WEBSITE CONF (Defaults should be okay)
