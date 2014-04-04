@@ -8,7 +8,7 @@ import os
 ###################################################
 
 AUTHOR = u'Jordeen Chang'
-SITENAME = u'Data Analysis Project'
+SITENAME = u'Google Trends and Stocks Relationship - Data Analysis Project'
 SITESUBTITLE = u'Template using the iPython notebook'
 GITHUB_REPOSITORY_URL = u'https://github.com/jodreen/googletrends-stocks'
 
