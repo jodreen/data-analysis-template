@@ -18,7 +18,7 @@ import re
 from StringIO import StringIO
  
 # Reads "DowJones.csv" of stocks and ticker symbols into a pandas dataframe
-def stocks_data(data='../data/DowJones.csv'):
+def stocks_data(data='../data/DowJones_Modified.csv'):
     stocks = pandas.read_csv(data)
     company = stocks.Company
     ticker = stocks.Ticker
@@ -115,7 +115,7 @@ for n in range(0,len(companies)):
         filename.replace(" ", "")
         
         # Creates a file and writes values from our three lists
-        with open("../data/raw/" + filename + "_gtrends.csv", 'w') as file:
+        with open("../data/raw/DowJones_Modified/" + filename + "_gtrends.csv", 'w') as file:
             writer = csv.writer(file, lineterminator = '\n')
             # Writes a header row with the titles: Date, Query, Price
             writer.writerow(['Date', queries[x][n], "Price"])
