@@ -115,12 +115,15 @@ for n in range(0,len(companies)):
         filename.replace(" ", "")
         
         # Creates a file and writes values from our three lists
-        with open("../data/raw/DowJones_Modified/" + filename + "_gtrends.csv", 'w') as file:
-            writer = csv.writer(file, lineterminator = '\n')
-            # Writes a header row with the titles: Date, Query, Price
-            writer.writerow(['Date', queries[x][n], "Price"])
-            # Writes a row for each value of date, value, and price
-            for row in zip(dates, values, prices):
-                writer.writerow(row)
-            # Closes and saves the file
-            file.close()
+        if dates != []:
+            with open("../data/raw/DowJones_Modified/" + filename + "_gtrends.csv", 'w') as file:
+                writer = csv.writer(file, lineterminator = '\n')
+                # Writes a header row with the titles: Date, Query, Price
+                writer.writerow(['Date', queries[x][n], "Price"])
+                # Writes a row for each value of date, value, and price
+                for row in zip(dates, values, prices):
+                    writer.writerow(row)
+                # Closes and saves the file
+                file.close()
+        else:
+            print "Failed to get data for " + queries[x][n]
