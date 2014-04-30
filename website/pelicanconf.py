@@ -7,10 +7,17 @@ import os
 # AUTHORSHIP AND WEBSITE INFO (Replace accordingly)
 ###################################################
 
+<<<<<<< HEAD
 AUTHOR = u'Hiroto Udagawa'
 SITENAME = u'Data Analysis Project'
 SITESUBTITLE = u'Template using the iPython notebook'
 GITHUB_REPOSITORY_URL = u'https://github.com/hiro722722/Stat-Project-2.git'
+=======
+AUTHOR = u'Jordeen Chang'
+SITENAME = u'Google Trends and Stocks Relationship - Data Analysis Project'
+SITESUBTITLE = u'Template using the iPython notebook'
+GITHUB_REPOSITORY_URL = u'https://github.com/jodreen/googletrends-stocks'
+>>>>>>> 6db6961d43b2c2c991b7c5c115b5ad1e642751ac
 
 ###################################################
 # FINER WEBSITE CONF (Defaults should be okay)
@@ -44,7 +51,11 @@ LINKS = (('Project Report', 'nb4'),
 
 
 # Social widget
+<<<<<<< HEAD
 SOCIAL = (('View on Github', GITHUB_REPOSITORY_URL),)
+=======
+SOCIAL = (('View on Github', 'https://github.com/jodreen/data-analysis-template'),)
+>>>>>>> 6db6961d43b2c2c991b7c5c115b5ad1e642751ac
 
 DEFAULT_PAGINATION = 10
 
