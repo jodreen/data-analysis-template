@@ -8,10 +8,6 @@ import os
 ###################################################
 
 <<<<<<< HEAD
-AUTHOR = u'Hiroto Udagawa'
-SITENAME = u'Data Analysis Project'
-SITESUBTITLE = u'Template using the iPython notebook'
-GITHUB_REPOSITORY_URL = u'https://github.com/hiro722722/Stat-Project-2.git'
 =======
 AUTHOR = u'Jordeen Chang'
 SITENAME = u'Google Trends and Stocks Relationship - Data Analysis Project'
