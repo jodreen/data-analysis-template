@@ -17,7 +17,7 @@ import mechanize
 import re
 from StringIO import StringIO
  
-# Reads "DowJones.csv" of stocks and ticker symbols into a pandas dataframe
+# Reads "DowJones_Modified.csv" of stocks and ticker symbols into a pandas dataframe
 def stocks_data(data='../data/DowJones_Modified.csv'):
     stocks = pandas.read_csv(data)
     company = stocks.Company
@@ -114,7 +114,7 @@ for n in range(0,len(companies)):
         filename = queries[x][n]
         filename.replace(" ", "")
         
-        # Creates a file and writes values from our three lists
+        # Creates a file in "data/raw/DowJones_Modified/" and writes values from our three lists
         if dates != []:
             with open("../data/raw/DowJones_Modified/" + filename + "_gtrends.csv", 'w') as file:
                 writer = csv.writer(file, lineterminator = '\n')

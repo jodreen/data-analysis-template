@@ -61,60 +61,60 @@ def yahoo_finance(ticker_symbol):
     base_url = "http://ichart.yahoo.com/table.csv?s="
     dt_url = '%s&a=%s&b=%s&c=%s&d=%s&e=%s&f=%s&g=d&ignore=.csv'% (ticker_symbol, "01", "01", "2004", "00", "00", "0000")
     return base_url + dt_url
-
     
+
 # Create CSV for each stock in stocks list
-for n in range(0,len(companies)):
-    try:
-        # Get stock data for the stock
-        url = yahoo_finance(tickers[n])
-        # Opens the Yahoo Finance csv file
-        response1 = br.open(url)
-        reader1 = csv.reader(StringIO(response1.read()))
-        # Creates a dictionary that maps dates to closing prices for that day
-        prices_dict = {row[0]: row[4] for row in reader1}
+for n in range(210,len(companies)):
+    # Get stock data for the stock
+    url = yahoo_finance(tickers[n])
+    # Opens the Yahoo Finance csv file
+    response1 = br.open(url)
+    reader1 = csv.reader(StringIO(response1.read()))
+    # Creates a dictionary that maps dates to closing prices for that day
+    prices_dict = {row[0]: row[4] for row in reader1}
 
-        for x in range(0,len(queries)):
-            
-            # Split queries list into a format that can be entered into the url                
-            query_split = queries[x][n].split()
-            query_params = '%20'.join(query_split)
-            
-            # Get CSV from Google Trends
-            response = br.open('http://www.google.com/trends/trendsReport?hl=en-US&q=' + query_params + '&cmpt=q&content=1&export=1') 
-            reader = csv.reader(StringIO(response.read()))
-            
-            # Creates empty lists to be populated with data
-            dates = []
-            values = []
-            prices = []
-            
-            # Populate lists with dates and Google Trends values in the correct formate.
-            for row in reader:
-                # Looks for the right rows to get data from, ignoring the junk
-                try:
-                    date, value = row
-                except ValueError:
-                    continue
-                # Takes the date for the Friday of the week and puts it in the correct format
-                if re.search('[0-9]{4}-[0-9]{2}-[0-9]{2}', date):
-                    dates.append(str((datetime.datetime.strptime(date[-10:], "%Y-%m-%d")-datetime.timedelta(days=1)).strftime("%Y-%m-%d"))) # Uses last date in time period
-                    values.append(value)
-            
-            # Adds stock prices to the corresponding dates found in the Google Trends data
-            for date in dates:
-                # Tries to add the price for the date from the Google Trends data
-                try:
-                    prices.append(prices_dict[date])
-                # Adds a blank value if the price is not available for the Google Trends date
-                except:
-                    prices.append("")
+    for x in range(0,len(queries)):
+        
+        # Split queries list into a format that can be entered into the url                
+        query_split = queries[x][n].split()
+        query_params = '%20'.join(query_split)
+        
+        # Get CSV from Google Trends
+        response = br.open('http://www.google.com/trends/trendsReport?hl=en-US&q=' + query_params + '&cmpt=q&content=1&export=1') 
+        reader = csv.reader(StringIO(response.read()))
+        
+        # Creates empty lists to be populated with data
+        dates = []
+        values = []
+        prices = []
+        
+        # Populate lists with dates and Google Trends values in the correct formate.
+        for row in reader:
+            # Looks for the right rows to get data from, ignoring the junk
+            try:
+                date, value = row
+            except ValueError:
+                continue
+            # Takes the date for the Friday of the week and puts it in the correct format
+            if re.search('[0-9]{4}-[0-9]{2}-[0-9]{2}', date):
+                dates.append(str((datetime.datetime.strptime(date[-10:], "%Y-%m-%d")-datetime.timedelta(days=1)).strftime("%Y-%m-%d"))) # Uses last date in time period
+                values.append(value)
+        
+        # Adds stock prices to the corresponding dates found in the Google Trends data
+        for date in dates:
+            # Tries to add the price for the date from the Google Trends data
+            try:
+                prices.append(prices_dict[date])
+            # Adds a blank value if the price is not available for the Google Trends date
+            except:
+                prices.append("")
 
-            # Sets the filename as the query
-            filename = queries[x][n]
-            filename.replace(" ", "")
-            
-            # Creates a file and writes values from our three lists
+        # Sets the filename as the query
+        filename = queries[x][n]
+        filename.replace(" ", "")
+        
+        # Creates a file and writes values from our three lists
+        if dates != []:
             with open("../data/raw/SP500/" + filename + "_gtrends.csv", 'w') as file:
                 writer = csv.writer(file, lineterminator = '\n')
                 # Writes a header row with the titles: Date, Query, Price
@@ -124,5 +124,5 @@ for n in range(0,len(companies)):
                     writer.writerow(row)
                 # Closes and saves the file
                 file.close()
-    except:
-        continue
+        else:
+            print "Failed to get data for " + queries[x][n]
