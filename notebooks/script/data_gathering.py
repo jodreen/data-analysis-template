@@ -32,7 +32,7 @@ def query(*arg):
     for query in arg:
         queries.append([query[n] for n in range(0, len(stocks))])
     return queries       
-queries = query(companies, tickers, "buy " + tickers, "sell " + tickers)
+queries = query(companies, tickers, "buy " + tickers, "sell " + tickers, "buy " + companies, "sell " + companies)
 
 br = mechanize.Browser()
 def browser_setup():
