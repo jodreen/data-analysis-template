@@ -4,7 +4,7 @@ Downloads Google Trends and stock data for search terms related to companies in 
 
 Creates a csv file with "Date", "Google Trends value", and "Price" for each search term.
 
-Files will be saved in the "../data/raw/" directory.
+Files will be saved in the "../data/raw/SP500" directory.
 """
 
 # Imports all important modules for the program
@@ -64,7 +64,7 @@ def yahoo_finance(ticker_symbol):
     
 
 # Create CSV for each stock in stocks list
-for n in range(210,len(companies)):
+for n in range(0,len(companies)):
     # Get stock data for the stock
     url = yahoo_finance(tickers[n])
     # Opens the Yahoo Finance csv file
