@@ -4,8 +4,13 @@ Downloads Google Trends and stock data for search terms related to companies in 
 
 Creates a csv file with "Date", "Google Trends value", and "Price" for each search term.
 
-Files will be saved in the "../data/raw/" directory.
+Files will be saved in the "../data/raw/Data_Modified" directory.
+
+Make sure to run "sudo pip install mechanize" before running the code for the first time.
+
+Data Sources: Google Trends (www.google.com/trends). Yahoo Finance (www.finance.yahoo.com).
 """
+
 
 # Imports all important modules for the program
 import sys
@@ -17,6 +22,7 @@ import mechanize
 import re
 from StringIO import StringIO
  
+    
 # Reads "DowJones_Modified.csv" of stocks and ticker symbols into a pandas dataframe
 def stocks_data(data='../data/DowJones_Modified.csv'):
     stocks = pandas.read_csv(data)
@@ -34,6 +40,8 @@ def query(*arg):
     return queries       
 queries = query(companies, tickers, "buy " + tickers, "sell " + tickers, "buy " + companies, "sell " + companies)
 
+
+# Sets up a virtual browser to download Google Trends and stock data
 br = mechanize.Browser()
 def browser_setup():
     # Open browser
