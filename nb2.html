@@ -1611,11 +1611,11 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 .highlight-ipynb .gr { color: #FF0000 } /* Generic.Error */
 .highlight-ipynb .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight-ipynb .gi { color: #00A000 } /* Generic.Inserted */
-.highlight-ipynb .go { color: #808080 } /* Generic.Output */
+.highlight-ipynb .go { color: #888888 } /* Generic.Output */
 .highlight-ipynb .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 .highlight-ipynb .gs { font-weight: bold } /* Generic.Strong */
 .highlight-ipynb .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight-ipynb .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight-ipynb .gt { color: #0044DD } /* Generic.Traceback */
 .highlight-ipynb .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
 .highlight-ipynb .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
 .highlight-ipynb .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
@@ -1719,18 +1719,18 @@ init_mathjax();
     <!-- Open Graph tags -->
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Data Cleaning"/>
-            <meta property="og:url" content="http://hiro722722.github.io/Stat-Project-2/nb2.html"/>
-            <meta property="og:description" content="In this notebook, you'll load the raw data into R or Pandas dataframe from the ./data/raw directory using the functions and classes (written during the data gathering phase) in the ./script directory perform visual exploration on your data variables to detect anomalies, errors, outliers, interesting features etc. clean ..."/>
+            <meta property="og:url" content="http://jodreen.github.io/googletrends-stocks/nb2.html"/>
+            <meta property="og:description" content="#Google Trends & Stock Prices: Data Cleaning We will clean up the data in "./data/raw" by removing rows that have missing values. First, we will clean the data for the Dow Jones companies, and then clean the data for the SP500 companies and Dow Jones companies. Preliminary Setup Step #0 ..."/>
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://hiro722722.github.io/Stat-Project-2/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="http://hiro722722.github.io/Stat-Project-2/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://jodreen.github.io/googletrends-stocks/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://jodreen.github.io/googletrends-stocks/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://hiro722722.github.io/Stat-Project-2/theme/css/pygments.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://hiro722722.github.io/Stat-Project-2/theme/css/style.css" type="text/css"/>
+    <link href="http://jodreen.github.io/googletrends-stocks/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://jodreen.github.io/googletrends-stocks/theme/css/style.css" type="text/css"/>
 
-        <link href="http://hiro722722.github.io/Stat-Project-2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Data Analysis Project ATOM Feed"/>
+        <link href="http://jodreen.github.io/googletrends-stocks/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Google Trends and Stocks Relationship - Data Analysis Project ATOM Feed"/>
 
     
     <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
@@ -1766,8 +1766,8 @@ init_mathjax();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://hiro722722.github.io/Stat-Project-2/" class="navbar-brand">
-Data Analysis Project            </a>
+            <a href="http://jodreen.github.io/googletrends-stocks/" class="navbar-brand">
+Google Trends and Stocks Relationship - Data Analysis Project            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -1777,7 +1777,7 @@ Data Analysis Project            </a>
                     <li><a href="nb1">Data Gathering</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://hiro722722.github.io/Stat-Project-2/archives.html"><i class="fa fa-th-list"></i>Archives</a></li>
+                <li><a href="http://jodreen.github.io/googletrends-stocks/archives.html"><i class="fa fa-th-list"></i>Archives</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -1792,7 +1792,7 @@ Data Analysis Project            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://hiro722722.github.io/Stat-Project-2/nb2.html"
+                    <a href="http://jodreen.github.io/googletrends-stocks/nb2.html"
                        rel="bookmark"
                        title="Permalink to Data Cleaning">
                         Data Cleaning
@@ -1815,39 +1815,25 @@ Data Analysis Project            </a>
                 </div>
                 <p>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this notebook, you'll</p>
+<h2 id="google-trends-stock-prices-data-cleaning">#Google Trends &amp; Stock Prices: Data Cleaning</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will clean up the data in &quot;./data/raw&quot; by removing rows that have missing values. First, we will clean the data for the Dow Jones companies, and then clean the data for the SP500 companies and Dow Jones companies.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="preliminary-setup">Preliminary Setup</h2>
+<h3 id="step-0-contributors">Step #0: Contributors</h3>
 <ul>
-<li><p><strong>load the raw data into R or Pandas dataframe</strong> from the <code>./data/raw</code> directory using the functions and classes (written during the data gathering phase) in the <code>./script</code> directory</p></li>
-<li><p><strong>perform visual exploration</strong> on your data variables to detect anomalies, errors, outliers, interesting features etc.</p></li>
-<li><p><strong>clean categorical and quantitative variables</strong> (by removing observations and variables with too many missing values, by consolidating categorical variables, by selecting an appropriate subset of variables and observations for later analysis, etc.)</p></li>
-<li><p><strong>save the cleaned data</strong> into csv files in the <code>./data/cleaned</code> directory</p></li>
-<li><p><strong>save interesting graphics</strong> you obtained during visual exploration into the <code>./visualiation</code> directory</p></li>
+<li>Jordeen Chang: Wrote data cleaning notebook</li>
 </ul>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="team-members-responsible-for-this-notebook">Team members responsible for this notebook:</h2>
-<p>List the team members contributing to this notebook, along with their responsabilities:</p>
-<ul>
-<li>team member 1 <strong>name</strong>: team member 1 <strong>responsabilities</strong></li>
-<li>team member 2 <strong>name</strong>: team member 2 <strong>responsabilities</strong></li>
-<li>etc.</li>
-</ul>
-<p>I advise you to work at least in pairs for each project notebook, as you did for the homework assignments. Of course, all team members may participate to each notebook.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I'll load the plant data in xml format into a R data frame using the</p>
-<pre><code>create_df_from_plant_xml(file)</code></pre>
-<p>function contained in the R script</p>
-<pre><code>    ./script/plant_df-R</code></pre>
+<h3 id="step-1-identify-the-problem">Step #1: Identify the problem</h3>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[4]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span>
@@ -1875,62 +1861,19 @@ The rmagic extension is already loaded. To reload it, use:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To load the function into a R cell, one needs to use the</p>
-<pre><code>source(R_script_file)</code></pre>
-<p>command in R, which works in a similar way as the</p>
-<pre><code>import module</code></pre>
-<p>command in Python:</p>
+<p>Let us first take a look at the data that we are dealing with. For each file, we have three columns, one for the date, the other for how popular the search term was (gathered from Google Trends), and the price of the stock during that time (gathered from Yahoo).</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[5]:
+In&nbsp;[31]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">source</span><span class="p">(</span><span class="s">&#39;./script/plant_df-R&#39;</span><span class="p">)</span>
-</pre></div>
+<span class="n">testing</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones/3M Company_gtrends.csv&quot;</span><span class="p">)</span>
+<span class="n">testing2</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones/CAT_gtrends.csv&quot;</span><span class="p">)</span>
 
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we can create a data frame directly from the XML file using the functin contained in the scrip above.</p>
-<p>If you wish to perform the cleaning using Pandas data frames instead of R data frames, one make the R data frame available to Python cells by using the R magic command:</p>
-<pre><code>%%R -d df_name</code></pre>
-<p>To know more on how to pass variables back and forth between R and Python cells, please have a look at the notebook <a href="http://nbviewer.ipython.org/url/github.com/ipython/ipython/raw/master/examples/notebooks/R%20Magics.ipynb">here</a>.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span> <span class="o">-</span><span class="n">d</span> <span class="n">data</span>
-
-<span class="n">library</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">create_df_from_plant_xml</span><span class="p">(</span><span class="s">&#39;./data/raw/plant.xml&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's load our data into a Pandas data frame:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[8]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">testing</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -1940,74 +1883,61 @@ In&nbsp;[8]:
 <div class="output vbox">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
-    Out[8]:</div>
-<div class="box-flex1 output_subarea output_pyout">
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_display_data">
 
-<div class="output_html rendered_html">
-<div style="max-height:1000px;max-width:1500px;overflow:auto;">
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>COMMON</th>
-      <th>BOTANICAL</th>
-      <th>ZONE</th>
-      <th>LIGHT</th>
-      <th>PRICE</th>
-      <th>AVAILABILITY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>           Bloodroot</td>
-      <td> Sanguinaria canadensis</td>
-      <td> 4</td>
-      <td> Mostly Shady</td>
-      <td> $2.44</td>
-      <td> 031599</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>           Columbine</td>
-      <td>   Aquilegia canadensis</td>
-      <td> 3</td>
-      <td> Mostly Shady</td>
-      <td> $9.37</td>
-      <td> 030699</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>      Marsh Marigold</td>
-      <td>       Caltha palustris</td>
-      <td> 4</td>
-      <td> Mostly Sunny</td>
-      <td> $6.81</td>
-      <td> 051799</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>             Cowslip</td>
-      <td>       Caltha palustris</td>
-      <td> 4</td>
-      <td> Mostly Shady</td>
-      <td> $9.90</td>
-      <td> 030699</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td> Dutchman's-Breeches</td>
-      <td>    Dicentra cucullaria</td>
-      <td> 3</td>
-      <td> Mostly Shady</td>
-      <td> $6.44</td>
-      <td> 012099</td>
-    </tr>
-  </tbody>
-</table>
+
+<pre>
+        Date X3M.Company Price
+1 2004-01-09           0    NA
+2 2004-01-16           0    NA
+3 2004-01-23         100    NA
+4 2004-01-30           0    NA
+5 2004-02-06           0 79.81
+6 2004-02-13           0 79.68
+
+</pre>
+
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[33]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">testing</span><span class="p">,</span> <span class="n">class</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_display_data">
+
+
+<pre>
+$Date
+[1] &quot;factor&quot;
+
+$X3M.Company
+[1] &quot;integer&quot;
+
+$Price
+[1] &quot;numeric&quot;
+
+
+</pre>
 
 </div>
 </div>
@@ -2017,15 +1947,198 @@ In&nbsp;[8]:
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The actual data cleaning can now begins!</p>
+<p>Looking at this we can see that we have 0 for our google trends values and NA for some of the prices. There is no point in using data points that do not have prices or have 0 for the google trends values because it will mess up the analysis. We also want to standardize all the data, so we will make sure everything follows the same format. We will have the first column be of class &quot;Date&quot;, the second column be &quot;integer&quot;, and the third be &quot;numeric.&quot; Now we know what data points we need to remove and we can get on to cleaning!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="data-cleaning-code">Data Cleaning Code</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-2-a-function-that-cleans-the-data-given-the-file-name">Step #2: A function that cleans the data given the file name</h3>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we will write a function that takes in a filename from the folder &quot;./data/raw/DowJones_Modified&quot; and</p>
+<ul>
+<li><p>converts the csv file into a data frame.</p></li>
+<li><p>checks the format of the columns and changes them if they are not (Date, integer, numeric).</p></li>
+<li><p>checks to see if any of the values are NA or 0. If so, the function will remove that row.</p></li>
+<li><p>saves this cleaned data frame into a csv file of the same name under the directory &quot;./data/cleaned/DowJones_Modified&quot;.</p></li>
+</ul>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[12]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">cleanDow</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones_Modified/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="n">class</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;integer&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">integer</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;numeric&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,]</span>
+    <span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/cleaned/DowJones_Modified/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">),</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-3-apply-the-function-to-all-files-in-dowjones-directory">Step #3: Apply the function to all files in DowJones directory</h3>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we will run this function on a list of files in the directory &quot;./data/raw/DowJones_Modified/&quot; and it will clean all the files in this directory.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[13]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">allDow</span> <span class="o">=</span> <span class="nb">list</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones_Modified/&quot;</span><span class="p">)</span>
+<span class="n">lapply</span><span class="p">(</span><span class="n">allDow</span><span class="p">,</span> <span class="n">cleanDow</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's print some of this out so we can see whether or not the data is cleaned correctly. We will use the same file that we saw earlier.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[35]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">testing</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">&quot;./data/cleaned/DowJones/3M Company_gtrends.csv&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">testing</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_display_data">
+
+
+<pre>
+        Date X3M.Company Price
+1 2004-04-02          84 81.78
+2 2004-04-16          90 83.73
+3 2004-04-23          93 87.90
+4 2004-04-30          62 86.48
+5 2004-05-07          66 84.43
+6 2004-05-14          70 83.81
+
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Perfect. The data is cleaned and our function works. Let's try to clean the rest of our data.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-4-repeat-for-sp500-companies">Step #4: Repeat for SP500 companies</h3>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we will repeat the process for the SP500 companies.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[14]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">cleanSP</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/raw/SP500/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="n">class</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;integer&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">integer</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;numeric&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,]</span>
+    <span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/cleaned/SP500/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">),</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[15]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">allSP</span> <span class="o">=</span> <span class="nb">list</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;./data/raw/SP500/&quot;</span><span class="p">)</span>
+<span class="n">lapply</span><span class="p">(</span><span class="n">allSP</span><span class="p">,</span> <span class="n">cleanSP</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-5-repeat-for-dow-jones-unmodified">Step #5: Repeat for Dow Jones (Unmodified)</h3>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And we repeat for the unmodified Dow Jones.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[17]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">cleanDowUnmodified</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+    <span class="n">modes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="n">class</span><span class="p">))</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;Date&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s">&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;integer&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">integer</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">modes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">!=</span> <span class="s">&quot;numeric&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="k">as</span><span class="o">.</span><span class="n">numeric</span><span class="p">(</span><span class="k">as</span><span class="o">.</span><span class="n">character</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">(</span><span class="n">stock</span><span class="p">)</span>
+    <span class="n">stock</span> <span class="o">=</span> <span class="n">stock</span><span class="p">[</span><span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">])</span> <span class="o">&amp;</span> <span class="err">!</span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">stock</span><span class="p">[,</span><span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">stock</span><span class="p">[,</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,]</span>
+    <span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">stock</span><span class="p">,</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">paste</span><span class="p">(</span><span class="s">&quot;./data/cleaned/DowJones/&quot;</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">),</span> <span class="n">row</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -2038,12 +2151,73 @@ In&nbsp;[]:
 In&nbsp;[]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="n">allDowUnmodified</span> <span class="o">=</span> <span class="nb">list</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones/&quot;</span><span class="p">)</span>
+<span class="n">lapply</span><span class="p">(</span><span class="n">allDowUnmodified</span><span class="p">,</span> <span class="n">cleanDowUnmodified</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another comparison of the data before cleaning and the data after.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[21]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones/3M Company_gtrends.csv&quot;</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s">&quot;./data/cleaned/DowJones/3M Company_gtrends.csv&quot;</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_display_data">
+
+
+<pre>
+[1] &quot;3M Company_gtrends.csv&quot;              
+[2] &quot;American Express Company_gtrends.csv&quot;
+[3] &quot;AT&amp;T, Inc._gtrends.csv&quot;              
+[4] &quot;AXP_gtrends.csv&quot;                     
+[5] &quot;BA_gtrends.csv&quot;                      
+[6] &quot;buy BA_gtrends.csv&quot;                  
+        Date X3M.Company Price
+1 2004-01-09           0    NA
+2 2004-01-16           0    NA
+3 2004-01-23         100    NA
+4 2004-01-30           0    NA
+5 2004-02-06           0 79.81
+6 2004-02-13           0 79.68
+        Date X3M.Company Price
+1 2004-04-02          84 81.78
+2 2004-04-16          90 83.73
+3 2004-04-23          93 87.90
+4 2004-04-30          62 86.48
+5 2004-05-07          66 84.43
+6 2004-05-14          70 83.81
+
+</pre>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="now-all-our-files-in-.datacleaned-are-formatted-correctly-and-ready-to-be-analyzed">Now all our files in &quot;./data/cleaned/&quot; are formatted correctly and ready to be analyzed!</h3>
 </div></p>
             </div>
             <!-- /.entry-content -->
@@ -2057,7 +2231,7 @@ In&nbsp;[]:
     <section>
         <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i>Social</h4></li>
-                    <li class="list-group-item"><a href="https://github.com/hiro722722/Stat-Project-2.git"><i
+                    <li class="list-group-item"><a href="https://github.com/jodreen/googletrends-stocks"><i
                             class="fa fa-view on github-square fa-lg"></i>View on Github
                     </a></li>
 
@@ -2095,7 +2269,7 @@ In&nbsp;[]:
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 Hiroto Udagawa
+         <div class="col-xs-10">&copy; 2014 Jordeen Chang
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
@@ -2110,10 +2284,10 @@ In&nbsp;[]:
 <script src="http://code.jquery.com/jquery.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://hiro722722.github.io/Stat-Project-2/theme/js/bootstrap.min.js"></script>
+<script src="http://jodreen.github.io/googletrends-stocks/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://hiro722722.github.io/Stat-Project-2/theme/js/respond.min.js"></script>
+<script src="http://jodreen.github.io/googletrends-stocks/theme/js/respond.min.js"></script>
 
 </body>
 </html>

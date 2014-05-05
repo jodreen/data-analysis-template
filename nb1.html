@@ -1611,11 +1611,11 @@ h1:hover .anchor-link,h2:hover .anchor-link,h3:hover .anchor-link,h4:hover .anch
 .highlight-ipynb .gr { color: #FF0000 } /* Generic.Error */
 .highlight-ipynb .gh { color: #000080; font-weight: bold } /* Generic.Heading */
 .highlight-ipynb .gi { color: #00A000 } /* Generic.Inserted */
-.highlight-ipynb .go { color: #808080 } /* Generic.Output */
+.highlight-ipynb .go { color: #888888 } /* Generic.Output */
 .highlight-ipynb .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
 .highlight-ipynb .gs { font-weight: bold } /* Generic.Strong */
 .highlight-ipynb .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.highlight-ipynb .gt { color: #0040D0 } /* Generic.Traceback */
+.highlight-ipynb .gt { color: #0044DD } /* Generic.Traceback */
 .highlight-ipynb .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
 .highlight-ipynb .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
 .highlight-ipynb .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
@@ -1719,18 +1719,18 @@ init_mathjax();
     <!-- Open Graph tags -->
             <meta property="og:type" content="article"/>
             <meta property="og:title" content="Data Gathering"/>
-            <meta property="og:url" content="http://hiro722722.github.io/Stat-Project-2/nb1.html"/>
-            <meta property="og:description" content="In this notebook, you'll create the directory structure for your project download the raw data for your project write functions and classes to transform raw data (e.g in XML, jason, etc.) into data frames explain what your are doing HELLO TEST Team members responsible for this notebook: List ..."/>
+            <meta property="og:url" content="http://jodreen.github.io/googletrends-stocks/nb1.html"/>
+            <meta property="og:description" content="#Google Trends & Stock Prices: Data Gathering We will create a python script "data_gathering.py" that aggregates two types of data: Google Trends values from Google Trends Stock prices from Yahoo Finance API Our goal is to find a relationship between the Google Trends values and the stock prices for the ..."/>
 
     <!-- Bootstrap -->
-        <link rel="stylesheet" href="http://hiro722722.github.io/Stat-Project-2/theme/css/bootstrap.min.css" type="text/css"/>
-    <link href="http://hiro722722.github.io/Stat-Project-2/theme/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://jodreen.github.io/googletrends-stocks/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://jodreen.github.io/googletrends-stocks/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="http://hiro722722.github.io/Stat-Project-2/theme/css/pygments.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://hiro722722.github.io/Stat-Project-2/theme/css/style.css" type="text/css"/>
+    <link href="http://jodreen.github.io/googletrends-stocks/theme/css/pygments.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://jodreen.github.io/googletrends-stocks/theme/css/style.css" type="text/css"/>
 
-        <link href="http://hiro722722.github.io/Stat-Project-2/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-              title="Data Analysis Project ATOM Feed"/>
+        <link href="http://jodreen.github.io/googletrends-stocks/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="Google Trends and Stocks Relationship - Data Analysis Project ATOM Feed"/>
 
     
     <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
@@ -1766,8 +1766,8 @@ init_mathjax();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="http://hiro722722.github.io/Stat-Project-2/" class="navbar-brand">
-Data Analysis Project            </a>
+            <a href="http://jodreen.github.io/googletrends-stocks/" class="navbar-brand">
+Google Trends and Stocks Relationship - Data Analysis Project            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
@@ -1777,7 +1777,7 @@ Data Analysis Project            </a>
                     <li><a href="nb1">Data Gathering</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://hiro722722.github.io/Stat-Project-2/archives.html"><i class="fa fa-th-list"></i>Archives</a></li>
+                <li><a href="http://jodreen.github.io/googletrends-stocks/archives.html"><i class="fa fa-th-list"></i>Archives</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -1792,7 +1792,7 @@ Data Analysis Project            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="http://hiro722722.github.io/Stat-Project-2/nb1.html"
+                    <a href="http://jodreen.github.io/googletrends-stocks/nb1.html"
                        rel="bookmark"
                        title="Permalink to Data Gathering">
                         Data Gathering
@@ -1815,79 +1815,37 @@ Data Analysis Project            </a>
                 </div>
                 <p>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In this notebook, you'll</p>
+<h2 id="google-trends-stock-prices-data-gathering">#Google Trends &amp; Stock Prices: Data Gathering</h2>
+<p>We will create a python script &quot;data_gathering.py&quot; that aggregates two types of data:</p>
+<ol style="list-style-type: decimal">
+<li>Google Trends values from Google Trends</li>
+<li>Stock prices from Yahoo Finance API</li>
+</ol>
+<p>Our goal is to find a relationship between the Google Trends values and the stock prices for the companies in the Dow Jones Industrial Average, a list of 30 top U.S. companies, and the S&amp;P500, a list of 500 top U.S. companies. The end product of the data gathering script should be many different csv files with three columns: &quot;Date&quot;, &quot;Google Trends Value&quot;, and &quot;Stock Price&quot; for different search terms related to each company. Excited? Great, then let's begin!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h2 id="preliminary-setup">Preliminary Setup</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-0-contributors">Step #0: Contributors</h3>
 <ul>
-<li>create the directory structure for your project</li>
-<li>download the raw data for your project</li>
-<li><strong>write functions and classes to transform raw data (e.g in XML, jason, etc.) into data frames</strong></li>
-<li>explain what your are doing</li>
+<li>Anshuman Dewangan: Researched all sources for data gathering. Wrote all data gathering code. Authored data gathering ipython notebook. Outlined procedure for other steps of the project.</li>
 </ul>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>HELLO TEST</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="team-members-responsible-for-this-notebook">Team members responsible for this notebook:</h2>
-<p>List the team members contributing to this notebook, along with their responsabilities:</p>
-<ul>
-<li>team member 1 <strong>name</strong>: team member 1 <strong>responsabilities</strong></li>
-<li>team member 2 <strong>name</strong>: team member 2 <strong>responsabilities</strong></li>
-<li>etc.</li>
-</ul>
-<p>I advise you to work at least in pairs for each project notebook, as you did for the homework assignments. Of course, all team members may participate to each notebook.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="instructions">Instructions:</h2>
-<p>In <strong>markdown cells</strong>, you'll</p>
-<ul>
-<li>list and describe the data sources for your class project
-<ul>
-<li>provide the data urls</li>
-<li>describe the file formats</li>
-<li>explain the data content of each file</li>
-</ul></li>
-</ul>
-<p><strong>Remark:</strong> If your data is not directly available through the web (for instance, you requested it from a company, or got it from Inna or Henry), place you data into your personal bdrive, and provide a link to it, that you'll use in this notebook to download it into the data folder, as explained below).</p>
-<p>In <strong>code cells</strong>, you'll</p>
-<ul>
-<li><p>create the following directories:</p>
-<pre><code>./data
-./data/raw        # to store your raw data
-./data/cleaned    # to store the cleanned data
-./data/simulated  # to store simulated data
-./visualizations  # to store your plots</code></pre></li>
-<li><p>display samples of your data files (e.g. for a csv files, use data frames and the <code>head</code> method)</p></li>
-<li><p>Write <strong>scripts</strong> into the <code>./script</code> directory using the he <strong>magic command</strong></p>
-<p>%%file ./script/file_name</p></li>
-</ul>
-<p>Your scripts should contain <strong>functions</strong> and <strong>objects</strong> allowing you to</p>
-<ul>
-<li><p>download the actual raw data in the directory <code>./data/raw</code></p></li>
-<li><p>load the downloaded the raw data files into data frames</p></li>
-</ul>
-<p>This way, the functions and objects contained in your scripts will be accessible in other notebooks through the <code>import</code> command in Python (see example below).</p>
-<p><strong>Remark 1:</strong> In the code cells, you may use Python, R, or Bash, as you find more convenient.</p>
-<p><strong>Remark 2:</strong> Try to make your notebook as readable and usable (by others) as possible.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Here is an example of how to package your code into scripts reusable in other notebook.</p>
-<p>You'll need to do something similar to that. You'll also need to write explanations as outlined above in markdown cells.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="creating-the-directory-structure">Creating the directory structure</h3>
+<h3 id="step-1-creating-the-directory-structure">Step #1: Creating the Directory Structure</h3>
+<p>First, let's set up the directory structure we'll need for our project. We'll create three folders in our current directory: script, data, and visualizations. Inside data, we'll create three more directories: raw, cleaned, and simulated.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[1]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">bash</span>
-<span class="n">mkdir</span> <span class="o">../</span><span class="n">script</span> <span class="o">../</span><span class="n">data</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">raw</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">cleaned</span> <span class="o">../</span><span class="n">data</span><span class="o">/</span><span class="n">simulated</span> <span class="o">../</span><span class="n">visualizations</span>
+<span class="c"># Makes the directories and displays the contents of the current directory</span>
+<span class="n">mkdir</span> <span class="o">./</span><span class="n">script</span> <span class="o">./</span><span class="n">data</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">raw</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">cleaned</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">simulated</span> <span class="o">./</span><span class="n">visualizations</span>
 <span class="n">ls</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 
@@ -1908,6 +1866,7 @@ NB4_project_report.ipynb
 NB3_data_analysis.ipynb
 NB2_data_cleaning.ipynb
 NB1_data_gathering.ipynb
+desktop.ini
 data
 
 </pre>
@@ -1917,7 +1876,11 @@ data
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stderr">
 <pre>
-mkdir: cannot create directory ‘../data’: File exists
+mkdir: cannot create directory ‘./script’: File exists
+mkdir: cannot create directory ‘./data’: File exists
+mkdir: cannot create directory ‘./data/raw’: File exists
+mkdir: cannot create directory ‘./data/simulated’: File exists
+mkdir: cannot create directory ‘./visualizations’: File exists
 
 </pre>
 </div>
@@ -1928,30 +1891,8 @@ mkdir: cannot create directory ‘../data’: File exists
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Downloading-and-displaying-raw-data">Downloading and displaying raw data<a class="anchor-link" href="#Downloading-and-displaying-raw-data">&#182;</a></h3>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In this example, I am using R. You want to use Python instead.</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[4]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%</span><span class="k">load_ext</span> <span class="n">rmagic</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>TO DO:</strong> list sources, display data sample, explain data content, etc.</p>
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We now download an XML source containing plant data, and display an typical plant entry, represented as a XML node:</p>
+<h3 id="step-2-installing-necessary-modules">Step #2: Installing Necessary Modules</h3>
+<p>Some modules need to be installed using the pip installer before we begin. Run the code below to make sure you have everything you have everything you need to execute the following steps successfully.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
@@ -1959,284 +1900,8 @@ In&nbsp;[4]:
 In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">library</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span>
-<span class="n">plant_url</span>  <span class="o">=</span>  <span class="s">&#39;http://www.stat.berkeley.edu/classes/s133/data/plant_catalog.xml&#39;</span>
-<span class="n">plant_file</span> <span class="o">=</span> <span class="s">&#39;./data/raw/plant.xml&#39;</span>
-
-<span class="n">download</span><span class="o">.</span><span class="n">file</span><span class="p">(</span><span class="n">plant_url</span><span class="p">,</span> <span class="n">plant_file</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;curl&quot;</span><span class="p">)</span>
-
-<span class="n">xml_doc</span>   <span class="o">=</span> <span class="n">xmlParse</span><span class="p">(</span><span class="n">plant_file</span><span class="p">)</span>
-<span class="n">root_node</span> <span class="o">=</span> <span class="n">xmlRoot</span><span class="p">(</span><span class="n">xml_doc</span><span class="p">)</span>
-
-<span class="n">plant_nodes</span> <span class="o">=</span> <span class="n">xmlChildren</span><span class="p">(</span><span class="n">root_node</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">plant_nodes</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-
-Attaching package: ‘XML’
-
-The following object(s) are masked from ‘package:tools’:
-
-    toHTML
-
-&lt;PLANT&gt;
-  &lt;COMMON&gt;Bloodroot&lt;/COMMON&gt;
-  &lt;BOTANICAL&gt;Sanguinaria canadensis&lt;/BOTANICAL&gt;
-  &lt;ZONE&gt;4&lt;/ZONE&gt;
-  &lt;LIGHT&gt;Mostly Shady&lt;/LIGHT&gt;
-  &lt;PRICE&gt;$2.44&lt;/PRICE&gt;
-  &lt;AVAILABILITY&gt;031599&lt;/AVAILABILITY&gt;
-&lt;/PLANT&gt; 
-
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Loading-raw-data-into-data-frames">Loading raw data into data frames<a class="anchor-link" href="#Loading-raw-data-into-data-frames">&#182;</a></h3>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The dataframe column labels are the tags of the XML nodes, contained in the plant XML nodes:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[7]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">column_names</span> <span class="o">=</span> <span class="n">names</span><span class="p">(</span><span class="n">plant_nodes</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span>
-<span class="n">cat</span><span class="p">(</span><span class="n">column_names</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-COMMON BOTANICAL ZONE LIGHT PRICE AVAILABILITY
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Given a column name, we create a data frame column containing the column values:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[11]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">common_tag</span> <span class="o">=</span> <span class="n">column_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">get_value</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">plant_node</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span> <span class="n">xmlValue</span><span class="p">(</span><span class="n">plant_node</span><span class="p">[[</span><span class="n">tag</span><span class="p">]])</span>
-    
-<span class="n">common_column</span> <span class="o">=</span> <span class="n">sapply</span><span class="p">(</span><span class="n">plant_nodes</span><span class="p">,</span> <span class="n">get_value</span><span class="p">,</span> <span class="n">common_tag</span><span class="p">)</span>
-    
-<span class="n">cat</span><span class="p">(</span><span class="n">common_column</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-Bloodroot Columbine Marsh Marigold Cowslip Dutchman&apos;s-Breeches Ginger, Wild Hepatica Liverleaf Jack-In-The-Pulpit Mayapple Phlox, Woodland Phlox, Blue Spring-Beauty Trillium Wake Robin Violet, Dog-Tooth Trout Lily Adder&apos;s-Tongue Anemone Grecian Windflower Bee Balm Bergamot Black-Eyed Susan Buttercup Crowfoot Butterfly Weed Cinquefoil Primrose Gentian Blue Gentian Jacob&apos;s Ladder Greek Valerian California Poppy Shooting Star Snakeroot Cardinal Flower
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We package the code above into a function that creates the data frame column corresponding from a tag name and a list of plant nodes:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[12]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">get_column</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">plants</span><span class="p">)</span> <span class="n">sapply</span><span class="p">(</span><span class="n">plants</span><span class="p">,</span> <span class="n">get_value</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
-    
-<span class="n">cat</span><span class="p">((</span><span class="n">get_column</span><span class="p">(</span><span class="s">&#39;COMMON&#39;</span><span class="p">,</span> <span class="n">plant_nodes</span><span class="p">)))</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-Bloodroot Columbine Marsh Marigold Cowslip Dutchman&apos;s-Breeches Ginger, Wild Hepatica Liverleaf Jack-In-The-Pulpit Mayapple Phlox, Woodland Phlox, Blue Spring-Beauty Trillium Wake Robin Violet, Dog-Tooth Trout Lily Adder&apos;s-Tongue Anemone Grecian Windflower Bee Balm Bergamot Black-Eyed Susan Buttercup Crowfoot Butterfly Weed Cinquefoil Primrose Gentian Blue Gentian Jacob&apos;s Ladder Greek Valerian California Poppy Shooting Star Snakeroot Cardinal Flower
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We are now ready to retrieve all the columns of our data frame into a list of vectors, which we will use to construct our data frame:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[13]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">lapply</span><span class="p">(</span><span class="n">column_names</span><span class="p">,</span> <span class="n">get_column</span><span class="p">,</span> <span class="n">plant_nodes</span><span class="p">)</span>
-
-<span class="n">plant_df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">plant_df</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
-<pre>
-               COMMON              BOTANICAL ZONE        LIGHT PRICE
-1           Bloodroot Sanguinaria canadensis    4 Mostly Shady $2.44
-2           Columbine   Aquilegia canadensis    3 Mostly Shady $9.37
-3      Marsh Marigold       Caltha palustris    4 Mostly Sunny $6.81
-4             Cowslip       Caltha palustris    4 Mostly Shady $9.90
-5 Dutchman&apos;s-Breeches    Dicentra cucullaria    3 Mostly Shady $6.44
-6        Ginger, Wild       Asarum canadense    3 Mostly Shady $9.03
-  AVAILABILITY
-1       031599
-2       030699
-3       051799
-4       030699
-5       012099
-6       041899
-
-</pre>
-
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Using the data frame we just created, we save the plant data into a csv file into the raw data directory:</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[14]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">plant_df</span><span class="p">,</span> <span class="s">&#39;./data/raw/plants_to_be_cleaned.csv&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">!</span>head ./data/raw/plants_to_be_cleaned.csv
-</pre></div>
-
-</div>
-</div>
-
-</div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Packaging-the-gathering-code-into-reusable-functions">Packaging the gathering code into reusable functions<a class="anchor-link" href="#Packaging-the-gathering-code-into-reusable-functions">&#182;</a></h3>
-</div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[15]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">file</span> <span class="o">./</span><span class="n">script</span><span class="o">/</span><span class="n">plant_df</span><span class="o">-</span><span class="n">R</span>
-
-<span class="n">get_value</span>  <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">plant_node</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span> <span class="n">xmlValue</span><span class="p">(</span><span class="n">plant_node</span><span class="p">[[</span><span class="n">tag</span><span class="p">]])</span>
-    
-<span class="n">get_column</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">plants</span><span class="p">)</span> <span class="n">sapply</span><span class="p">(</span><span class="n">plants</span><span class="p">,</span> <span class="n">get_value</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
-    
-<span class="n">create_df_from_plant_xml</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">plant_file</span><span class="p">){</span>
-    <span class="n">require</span><span class="p">(</span><span class="n">XML</span><span class="p">)</span>
-    <span class="n">xml_doc</span>      <span class="o">=</span> <span class="n">xmlParse</span><span class="p">(</span><span class="n">plant_file</span><span class="p">)</span>
-    <span class="n">root_node</span>    <span class="o">=</span> <span class="n">xmlRoot</span><span class="p">(</span><span class="n">xml_doc</span><span class="p">)</span>
-    <span class="n">plant_nodes</span>  <span class="o">=</span> <span class="n">xmlChildren</span><span class="p">(</span><span class="n">root_node</span><span class="p">)</span>
-    <span class="n">column_names</span> <span class="o">=</span> <span class="n">names</span><span class="p">(</span><span class="n">plant_nodes</span><span class="p">[[</span><span class="mi">1</span><span class="p">]])</span>
-
-    <span class="n">data</span>     <span class="o">=</span> <span class="n">lapply</span><span class="p">(</span><span class="n">column_names</span><span class="p">,</span> <span class="n">get_column</span><span class="p">,</span> <span class="n">plant_nodes</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">))</span>
-<span class="p">}</span>
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">bash</span>
+<span class="n">sudo</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">mechanize</span>
 </pre></div>
 
 </div>
@@ -2249,7 +1914,14 @@ In&nbsp;[15]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Writing ./script/plant_df-R
+Downloading/unpacking mechanize
+  Running setup.py egg_info for package mechanize
+    
+Installing collected packages: mechanize
+  Running setup.py install for mechanize
+    
+Successfully installed mechanize
+Cleaning up...
 
 </pre>
 </div>
@@ -2260,18 +1932,51 @@ Writing ./script/plant_df-R
 
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, our function converting a raw plant XML file into a R data frame can be used in other notebooks, using the <code>source</code> command:</p>
+<hr />
+<h2 id="data-gathering-code">Data Gathering Code</h2>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-3-module-import">Step #3: Module Import</h3>
+<p>Now that we got all the boring stuff out of the way, it's time to write our actual data gather script! As a first step in our code, let's make all the necessary imports that we will need to use. We'll see how each import is being used later on. If you run this cell and get an error, return to the previous step and make sure you installed &quot;mechanize&quot; correctly.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[16]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
-<span class="n">source</span><span class="p">(</span><span class="s">&#39;./script/plant_df-R&#39;</span><span class="p">)</span>
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Imports all important modules for the program</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">cookielib</span>
+<span class="kn">import</span> <span class="nn">mechanize</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
+</pre></div>
 
-<span class="k">print</span><span class="p">(</span><span class="n">head</span><span class="p">(</span><span class="n">create_df_from_plant_xml</span><span class="p">(</span><span class="n">plant_file</span><span class="p">)))</span>
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-4-load-dow-jones-data">Step #4: Load Dow Jones Data</h3>
+<p>Next, let's load the file &quot;DowJones_Modified.csv&quot; into a pandas dataframe called &quot;stocks&quot;. &quot;DowJones_Modified.csv&quot; is a manually created file of the list of companies in the Dow Jones Industrial Average from Yahoo Finance with two columns: &quot;Company&quot;, &quot;Ticker&quot;. However, we modified the company names to incorporate more popular search terms. For example, we would use &quot;American Express&quot; instead of &quot;American Express Company&quot; to get more search results.</p>
+<p>Source: http://finance.yahoo.com/q/cp?s=%5EDJI</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[8]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Reads &quot;DowJones_Modified.csv&quot; of stocks and ticker symbols into a pandas dataframe</span>
+<span class="n">stocks</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">&#39;./data/DowJones_Modified.csv&#39;</span><span class="p">)</span>
+<span class="n">companies</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">Company</span>
+<span class="n">tickers</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">Ticker</span>
+
+<span class="k">print</span> <span class="n">stocks</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -2282,42 +1987,708 @@ In&nbsp;[16]:
 
 
 <div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
-
-
+<div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-               COMMON              BOTANICAL ZONE        LIGHT PRICE
-1           Bloodroot Sanguinaria canadensis    4 Mostly Shady $2.44
-2           Columbine   Aquilegia canadensis    3 Mostly Shady $9.37
-3      Marsh Marigold       Caltha palustris    4 Mostly Sunny $6.81
-4             Cowslip       Caltha palustris    4 Mostly Shady $9.90
-5 Dutchman&apos;s-Breeches    Dicentra cucullaria    3 Mostly Shady $6.44
-6        Ginger, Wild       Asarum canadense    3 Mostly Shady $9.03
-  AVAILABILITY
-1       031599
-2       030699
-3       051799
-4       030699
-5       012099
-6       041899
+            Company Ticker
+0  American Express    AXP
+1            Boeing     BA
+2       Caterpillar    CAT
+3             Cisco   CSCO
+4           Chevron    CVX
+5           du Pont     DD
+
+[6 rows x 2 columns]
 
 </pre>
-
 </div>
 </div>
 
 </div>
 </div>
 
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-5-create-queries-lists">Step #5: Create Queries Lists</h3>
+<p>Now we will create a list of lists with all the queries we want to search on Google Trends. We want to pull data for six different queries for each company:</p>
+<ol style="list-style-type: decimal">
+<li>Company name</li>
+<li>Ticker symbol</li>
+<li>&quot;Buy&quot; + ticker symbol</li>
+<li>&quot;Sell&quot; + ticker symbol</li>
+<li>&quot;Buy&quot; + company name</li>
+<li>&quot;Sell&quot; + company name</li>
+</ol>
+<p>For example, Apple will have six different queries:</p>
+<ol style="list-style-type: decimal">
+<li>Apple</li>
+<li>AAPL</li>
+<li>Buy AAPL</li>
+<li>Sell AAPL</li>
+<li>Buy Apple</li>
+<li>Sell Apple</li>
+</ol>
+<p>We'll create a class that takes in different types of queries for each company. The input will be the following arguments: &quot;company&quot;, &quot;ticker&quot;, &quot;'buy ' + ticker&quot;, &quot;'sell ' + ticker&quot;, &quot;'buy ' + company&quot;, &quot;'sell ' + company&quot;. The output will be a list of lists with all the search terms we want.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
-<div class="highlight-ipynb"><pre class="ipynb">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Creates a list of lists with search terms for all companies in the format given by inputs</span>
+<span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">queries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
+        <span class="n">queries</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">query</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stocks</span><span class="p">))])</span>
+    <span class="k">return</span> <span class="n">queries</span>
+        
+<span class="n">queries</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">companies</span><span class="p">,</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;buy &quot;</span> <span class="o">+</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;sell &quot;</span> <span class="o">+</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;buy &quot;</span> <span class="o">+</span> <span class="n">companies</span><span class="p">,</span> <span class="s">&quot;sell &quot;</span> <span class="o">+</span> <span class="n">companies</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">queries</span>
 </pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+[[&apos;American Express&apos;, &apos;Boeing&apos;, &apos;Caterpillar&apos;, &apos;Cisco&apos;, &apos;Chevron&apos;, &apos;du Pont&apos;, &apos;Disney&apos;, &apos;General Electric&apos;, &apos;Goldman Sachs&apos;, &apos;Home Depot&apos;, &apos;IBM&apos;, &apos;Intel&apos;, &apos;Johnson &amp; Johnson&apos;, &apos;JPMorgan Chase&apos;, &apos;Coca-Cola&apos;, &quot;McDonald&apos;s&quot;, &apos;3M&apos;, &apos;Merck&apos;, &apos;Microsoft&apos;, &apos;Nike&apos;, &apos;Pfizer&apos;, &apos;Procter &amp; Gamble&apos;, &apos;AT&amp;T&apos;, &apos;Travelers&apos;, &apos;UnitedHealth&apos;, &apos;United Technologies&apos;, &apos;Visa&apos;, &apos;Verizon&apos;, &apos;WalMart&apos;, &apos;Exxon Mobil&apos;], [&apos;AXP&apos;, &apos;BA&apos;, &apos;CAT&apos;, &apos;CSCO&apos;, &apos;CVX&apos;, &apos;DD&apos;, &apos;DIS&apos;, &apos;GE&apos;, &apos;GS&apos;, &apos;HD&apos;, &apos;IBM&apos;, &apos;INTC&apos;, &apos;JNJ&apos;, &apos;JPM&apos;, &apos;KO&apos;, &apos;MCD&apos;, &apos;MMM&apos;, &apos;MRK&apos;, &apos;MSFT&apos;, &apos;NKE&apos;, &apos;PFE&apos;, &apos;PG&apos;, &apos;T&apos;, &apos;TRV&apos;, &apos;UNH&apos;, &apos;UTX&apos;, &apos;V&apos;, &apos;VZ&apos;, &apos;WMT&apos;, &apos;XOM&apos;], [&apos;buy AXP&apos;, &apos;buy BA&apos;, &apos;buy CAT&apos;, &apos;buy CSCO&apos;, &apos;buy CVX&apos;, &apos;buy DD&apos;, &apos;buy DIS&apos;, &apos;buy GE&apos;, &apos;buy GS&apos;, &apos;buy HD&apos;, &apos;buy IBM&apos;, &apos;buy INTC&apos;, &apos;buy JNJ&apos;, &apos;buy JPM&apos;, &apos;buy KO&apos;, &apos;buy MCD&apos;, &apos;buy MMM&apos;, &apos;buy MRK&apos;, &apos;buy MSFT&apos;, &apos;buy NKE&apos;, &apos;buy PFE&apos;, &apos;buy PG&apos;, &apos;buy T&apos;, &apos;buy TRV&apos;, &apos;buy UNH&apos;, &apos;buy UTX&apos;, &apos;buy V&apos;, &apos;buy VZ&apos;, &apos;buy WMT&apos;, &apos;buy XOM&apos;], [&apos;sell AXP&apos;, &apos;sell BA&apos;, &apos;sell CAT&apos;, &apos;sell CSCO&apos;, &apos;sell CVX&apos;, &apos;sell DD&apos;, &apos;sell DIS&apos;, &apos;sell GE&apos;, &apos;sell GS&apos;, &apos;sell HD&apos;, &apos;sell IBM&apos;, &apos;sell INTC&apos;, &apos;sell JNJ&apos;, &apos;sell JPM&apos;, &apos;sell KO&apos;, &apos;sell MCD&apos;, &apos;sell MMM&apos;, &apos;sell MRK&apos;, &apos;sell MSFT&apos;, &apos;sell NKE&apos;, &apos;sell PFE&apos;, &apos;sell PG&apos;, &apos;sell T&apos;, &apos;sell TRV&apos;, &apos;sell UNH&apos;, &apos;sell UTX&apos;, &apos;sell V&apos;, &apos;sell VZ&apos;, &apos;sell WMT&apos;, &apos;sell XOM&apos;], [&apos;buy American Express&apos;, &apos;buy Boeing&apos;, &apos;buy Caterpillar&apos;, &apos;buy Cisco&apos;, &apos;buy Chevron&apos;, &apos;buy du Pont&apos;, &apos;buy Disney&apos;, &apos;buy General Electric&apos;, &apos;buy Goldman Sachs&apos;, &apos;buy Home Depot&apos;, &apos;buy IBM&apos;, &apos;buy Intel&apos;, &apos;buy Johnson &amp; Johnson&apos;, &apos;buy JPMorgan Chase&apos;, &apos;buy Coca-Cola&apos;, &quot;buy McDonald&apos;s&quot;, &apos;buy 3M&apos;, &apos;buy Merck&apos;, &apos;buy Microsoft&apos;, &apos;buy Nike&apos;, &apos;buy Pfizer&apos;, &apos;buy Procter &amp; Gamble&apos;, &apos;buy AT&amp;T&apos;, &apos;buy Travelers&apos;, &apos;buy UnitedHealth&apos;, &apos;buy United Technologies&apos;, &apos;buy Visa&apos;, &apos;buy Verizon&apos;, &apos;buy WalMart&apos;, &apos;buy Exxon Mobil&apos;], [&apos;sell American Express&apos;, &apos;sell Boeing&apos;, &apos;sell Caterpillar&apos;, &apos;sell Cisco&apos;, &apos;sell Chevron&apos;, &apos;sell du Pont&apos;, &apos;sell Disney&apos;, &apos;sell General Electric&apos;, &apos;sell Goldman Sachs&apos;, &apos;sell Home Depot&apos;, &apos;sell IBM&apos;, &apos;sell Intel&apos;, &apos;sell Johnson &amp; Johnson&apos;, &apos;sell JPMorgan Chase&apos;, &apos;sell Coca-Cola&apos;, &quot;sell McDonald&apos;s&quot;, &apos;sell 3M&apos;, &apos;sell Merck&apos;, &apos;sell Microsoft&apos;, &apos;sell Nike&apos;, &apos;sell Pfizer&apos;, &apos;sell Procter &amp; Gamble&apos;, &apos;sell AT&amp;T&apos;, &apos;sell Travelers&apos;, &apos;sell UnitedHealth&apos;, &apos;sell United Technologies&apos;, &apos;sell Visa&apos;, &apos;sell Verizon&apos;, &apos;sell WalMart&apos;, &apos;sell Exxon Mobil&apos;]]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-6-setup-browser">Step #6: Setup Browser</h3>
+<p>Cool, we now have all the search terms we want to get data for from Google Trends. Before we can actually pull the data from Google Trends, however, we run into two problems:</p>
+<ol style="list-style-type: decimal">
+<li>The data is not directly downloadable from a csv url</li>
+<li>The data is only securely available to Google users</li>
+</ol>
+<p>These problems arise because Google Trends has no API that allows users to pull data easily, making our lives harder. Therefore, we have create a virtual browser that would allow us to pull csv files directly by authenticating Google using login credentials. Otherwise, there is no direct way to download the csv data through programming code. For ideas on how to do this, we conducted a lot of research and got some major help from our source below.</p>
+<p>Source: https://gist.github.com/tlmaloney/5650699</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[10]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Open browser</span>
+<span class="n">br</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">Browser</span><span class="p">()</span>
+
+<span class="c"># Make it seem like we are an actual person</span>
+<span class="n">br</span><span class="o">.</span><span class="n">set_handle_robots</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c"># Create cookie jar</span>
+<span class="n">cj</span> <span class="o">=</span> <span class="n">cookielib</span><span class="o">.</span><span class="n">LWPCookieJar</span><span class="p">()</span>
+<span class="n">br</span><span class="o">.</span><span class="n">set_cookiejar</span><span class="p">(</span><span class="n">cj</span><span class="p">)</span>
+
+<span class="c"># Act like we&#39;re a real browser</span>
+<span class="n">br</span><span class="o">.</span><span class="n">addheaders</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;User-agent&#39;</span><span class="p">,</span> <span class="s">&#39;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1&#39;</span><span class="p">)]</span>
+
+<span class="c"># Login in to Google</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;https://accounts.google.com/ServiceLogin?hl=en&amp;continue=https://www.google.com/&#39;</span><span class="p">)</span>
+<span class="n">forms</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">ParseResponse</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">form</span><span class="p">[</span><span class="s">&#39;Email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;DherintoR&quot;</span>
+<span class="n">form</span><span class="p">[</span><span class="s">&#39;Passwd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;forthestars&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">click</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-7-get-google-trends-data">Step #7: Get Google Trends Data</h3>
+<p>That should do it! Now we are ready to get Google Trends data for our first query: &quot;American Express&quot;. First, we'll put our queries relateed to the company, which are often more than one word, into a form the browser will understand: with &quot;%20&quot; between each word. Then, we will append the search to our Google Trends url to get a csv of the Google Trends data.</p>
+<p>Source: http://www.google.com/trends/explore</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Split queries list into a format that can be entered into the url       </span>
+<span class="n">query_split</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="s">&#39;%20&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query_split</span><span class="p">)</span>
+
+<span class="c"># Get CSV from Google Trends   </span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+
+<span class="c"># Print first 10 lines of csv file</span>
+<span class="k">print</span> <span class="n">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">reader</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+American Express
+[&apos;Web Search interest: american express&apos;]
+[&apos;Worldwide; 2004 - present&apos;]
+[]
+[&apos;Interest over time&apos;]
+[&apos;Week&apos;, &apos;american express&apos;]
+[&apos;2004-01-04 - 2004-01-10&apos;, &apos;72&apos;]
+[&apos;2004-01-11 - 2004-01-17&apos;, &apos;72&apos;]
+[&apos;2004-01-18 - 2004-01-24&apos;, &apos;68&apos;]
+[&apos;2004-01-25 - 2004-01-31&apos;, &apos;65&apos;]
+[&apos;2004-02-01 - 2004-02-07&apos;, &apos;66&apos;]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-8-clean-the-data">Step #8: Clean the Data</h3>
+<p>It worked! Interesting, the csv file comes with a lot of junk information. Additionally, the actual Google Trends data comes in an awkward format: &quot;Date (given as a weekly range), &quot;Google Trends Value&quot;. Let's clean the data so that it only saves the date for the Friday of each week and puts all the information into two different lists: &quot;dates&quot; and &quot;values&quot;.</p>
+<p>Source: https://support.google.com/trends/answer/4365533?hl=en&amp;ref_topic=4365599</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[12]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Reload the page</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+
+<span class="c"># Create empty lists to be populated with date and trend values</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># Populate lists with dates and Google Trends values in the correct formate.</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+    <span class="c"># Looks for the right rows to get data from, ignoring the junk</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">date</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">row</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="c"># Takes the date for the Friday of the week and puts it in the correct format</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;[0-9]{4}-[0-9]{2}-[0-9]{2}&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+        <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)))</span> <span class="c"># Uses last date in time period</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="c">#Print the contents of the list</span>
+<span class="k">print</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+[&apos;2004-01-09&apos;, &apos;2004-01-16&apos;, &apos;2004-01-23&apos;, &apos;2004-01-30&apos;, &apos;2004-02-06&apos;, &apos;2004-02-13&apos;]
+[&apos;72&apos;, &apos;72&apos;, &apos;68&apos;, &apos;65&apos;, &apos;67&apos;, &apos;68&apos;]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="step-9-explanation-of-google-trends-data">Step #9: Explanation of Google Trends Data</h2>
+<p>Let's take a moment's break from writing code to explain how the Google Trends data works.</p>
+<h4 id="how-trends-data-is-normalized">How Trends Data is Normalized</h4>
+<p>The Google Trends data for any particular query is normalized on a scale of 0-100, with &quot;100&quot; being the day that received the highest search volume. According to the Google Trends help page, &quot;Normalized means that sets of search data are divided by a common variable, like total searches, to cancel out the variable's effect on the data.&quot;</p>
+<h4 id="data-that-is-excluded">Data that is Excluded</h4>
+<p>Google is very protective over its search data, which is why it does not provide the original data but normalized values. Additionally, Google Trends does not provide information for the following data:</p>
+<ol style="list-style-type: decimal">
+<li>&quot;Searches made by few people: Trends only analyzes data for popular search terms, so terms with low volume won’t appear.&quot;</li>
+<li>&quot;Duplicate searches: Trends eliminates repeated queries from a certain user over a short period of time.&quot;</li>
+</ol>
+<h4 id="problems-with-google-trends-data">Problems with Google Trends Data</h4>
+<p>With this information about Google Trends Data in mind, we run into three large problems.</p>
+<ol style="list-style-type: decimal">
+<li>Data is only available weekly (for high volume search terms only) or monthly (for all other search terms) starting from January 2004 when Google began. This limits the number of data points we have access to. See Example #1.</li>
+<li>We cannot pull data for &quot;unpopular&quot; search terms. This limits the search terms that are effective for many of our companies. For example, while &quot;American Express&quot; retrieves data (as shown above), &quot;sell CSCO&quot; returns a csv with blank data. We will avoid pulling data for these queries in our final data gathering script. See Example #2.</li>
+<li>Since the data is normalized, any time period with significantly less searches compared to other months will return a &quot;0&quot;. Since the search volume grows over time, a lot of the data in the early years (2004-2007) just has zeroes for values. We will remove these data points during data cleaning. See Example #3.</li>
+</ol>
+<p>Due to these unavoidable biases, we take our conclusions with a grain of salt. However, these problems should not get in the way of finding the general relationship between search data and stock price, so let's push forward!</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[42]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c">#Example #1: Only Monthly Google Trends Data</span>
+<span class="n">query_split</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="s">&#39;%20&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query_split</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+<span class="k">print</span> <span class="s">&quot;Example #1: Only Monthly Google Trends Data</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="k">print</span> <span class="n">queries</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">reader</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span>
+
+<span class="c"># Example #2: Unavailable Google Trends Data  </span>
+<span class="n">query_split</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="s">&#39;%20&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query_split</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+<span class="k">print</span> <span class="s">&quot;Example #2: Unavailable Google Trends Data</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="k">print</span> <span class="n">queries</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">reader</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">End of csv file&quot;</span>
+<span class="k">print</span> <span class="s">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">&quot;</span>
+    
+<span class="c">#Example #3: Limited Google Trends Data</span>
+<span class="n">query_split</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="s">&#39;%20&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query_split</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+<span class="k">print</span> <span class="s">&quot;Example #3: Limited Google Trends Data</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="k">print</span> <span class="n">queries</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">reader</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="k">print</span> <span class="s">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span> <span class="o">+</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Example #1: Only Monthly Google Trends Data
+
+buy CSCO
+[&apos;Web Search interest: buy csco&apos;]
+[&apos;Worldwide; 2004 - present&apos;]
+[]
+[&apos;Interest over time&apos;]
+[&apos;Month&apos;, &apos;buy csco&apos;]
+[&apos;2004-01&apos;, &apos;0&apos;]
+[&apos;2004-02&apos;, &apos;0&apos;]
+[&apos;2004-03&apos;, &apos;0&apos;]
+[&apos;2004-04&apos;, &apos;0&apos;]
+[&apos;2004-05&apos;, &apos;0&apos;]
+--------------------------------------------------
+
+
+Example #2: Unavailable Google Trends Data
+
+sell CSCO
+[&apos;Web Search interest: sell csco&apos;]
+[&apos;Worldwide; 2004 - present&apos;]
+[]
+
+End of csv file
+--------------------------------------------------
+
+
+Example #3: Limited Google Trends Data
+
+sell Cisco
+[&apos;Web Search interest: sell cisco&apos;]
+[&apos;Worldwide; 2004 - present&apos;]
+[]
+[&apos;Interest over time&apos;]
+[&apos;Month&apos;, &apos;sell cisco&apos;]
+[&apos;2004-01&apos;, &apos;0&apos;]
+[&apos;2004-02&apos;, &apos;0&apos;]
+[&apos;2004-03&apos;, &apos;0&apos;]
+[&apos;2004-04&apos;, &apos;0&apos;]
+[&apos;2004-05&apos;, &apos;0&apos;]
+--------------------------------------------------
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-10-get-stock-data">Step #10: Get Stock Data</h3>
+<p>Great! We have two lists for our query &quot;American Express&quot;, one with the dates and one with the corresponding Google Trends values. Now, let's try getting stock data on the ticker symbol for American Express (AXP) using the Yahoo Finance API. We'll load a csv with daily stock price data for American Express (AXP) from January 1, 2004 (when Google Trends data begins) to present.</p>
+<p>Source: https://code.google.com/p/yahoo-finance-managed/wiki/csvHistQuotesDownload</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[39]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Create a url that acceses Yahoo Finance historical data from 01-01-2004 to present for tickers[0] = JNJ</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s">&quot;http://ichart.yahoo.com/table.csv?s=&quot;</span>
+<span class="n">dt_url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&amp;a=</span><span class="si">%s</span><span class="s">&amp;b=</span><span class="si">%s</span><span class="s">&amp;c=</span><span class="si">%s</span><span class="s">&amp;d=</span><span class="si">%s</span><span class="s">&amp;e=</span><span class="si">%s</span><span class="s">&amp;f=</span><span class="si">%s</span><span class="s">&amp;g=d&amp;ignore=.csv&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">tickers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;2004&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;0000&quot;</span><span class="p">)</span>
+
+<span class="c"># Opens the Yahoo Finance csv file</span>
+<span class="n">response1</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">dt_url</span><span class="p">)</span>
+<span class="n">reader1</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response1</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+
+<span class="c"># Print first 6 lines of csv file</span>
+<span class="k">print</span> <span class="n">tickers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">reader1</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+AXP
+[&apos;Date&apos;, &apos;Open&apos;, &apos;High&apos;, &apos;Low&apos;, &apos;Close&apos;, &apos;Volume&apos;, &apos;Adj Close&apos;]
+[&apos;2014-05-02&apos;, &apos;86.77&apos;, &apos;87.31&apos;, &apos;86.41&apos;, &apos;86.93&apos;, &apos;3707400&apos;, &apos;86.93&apos;]
+[&apos;2014-05-01&apos;, &apos;87.53&apos;, &apos;87.58&apos;, &apos;86.33&apos;, &apos;86.82&apos;, &apos;4679900&apos;, &apos;86.82&apos;]
+[&apos;2014-04-30&apos;, &apos;87.61&apos;, &apos;87.66&apos;, &apos;86.96&apos;, &apos;87.43&apos;, &apos;4351600&apos;, &apos;87.43&apos;]
+[&apos;2014-04-29&apos;, &apos;87.34&apos;, &apos;87.95&apos;, &apos;87.19&apos;, &apos;87.79&apos;, &apos;2852900&apos;, &apos;87.79&apos;]
+[&apos;2014-04-28&apos;, &apos;87.44&apos;, &apos;87.58&apos;, &apos;85.85&apos;, &apos;87.06&apos;, &apos;4760400&apos;, &apos;87.06&apos;]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-11-add-prices">Step #11: Add Prices</h3>
+<p>Next, we'll save the closing prices of the stock data in a dictionary called &quot;prices_dict&quot;. Then, we will use this dictionary to add prices to the list &quot;prices&quot; for the corresponding date in &quot;dates&quot;. If no price is found for a specific date, we will enter &quot;&quot;; these values will be removed later during data cleaning.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[40]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Reloads the csv file</span>
+<span class="n">response1</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">dt_url</span><span class="p">)</span>
+<span class="n">reader1</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response1</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+
+<span class="c"># Creates a dictionary that maps dates to closing prices for that day</span>
+<span class="n">prices_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader1</span><span class="p">}</span>
+
+<span class="c"># Adds stock prices to the corresponding dates found in the Google Trends data</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+    <span class="c"># Tries to add the price for the date from the Google Trends data</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prices_dict</span><span class="p">[</span><span class="n">date</span><span class="p">])</span>
+    <span class="c"># Adds a blank value if the price is not available for the Google Trends date</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+        
+<span class="c"># Print the contents of &quot;prices&quot; list</span>
+<span class="k">print</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+[&apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;&apos;, &apos;53.06&apos;, &apos;53.65&apos;, &apos;53.16&apos;, &apos;53.42&apos;, &apos;52.77&apos;, &apos;52.12&apos;, &apos;51.08&apos;, &apos;50.03&apos;, &apos;52.43&apos;, &apos;&apos;, &apos;50.58&apos;, &apos;50.27&apos;, &apos;48.95&apos;, &apos;48.49&apos;, &apos;48.86&apos;, &apos;49.63&apos;]
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="step-12-write-the-csv-file">Step #12: Write the csv file</h3>
+<p>Fantastic! Now we have three lists with corresponding data:</p>
+<ol style="list-style-type: decimal">
+<li>dates - Dates</li>
+<li>values - Google Trends values</li>
+<li>prices - Stock prices</li>
+</ol>
+<p>What's important to note is that the Google Trends value in &quot;values[0]&quot; and the stock price in &quot;prices[0]&quot; corresponds to the date in &quot;dates[0]&quot;. This fact is crucial when executing the last step, which is to write a csv file containing all these values in separate columns: &quot;Date&quot;, &quot;Value&quot; (header is denoted by the query term), and &quot;Price&quot;. The csv file will be saved as &quot;American Express_gtrends.csv&quot; in the directory &quot;data/raw/DowJones_Modified&quot;.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[43]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Sets the filename as the query</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c"># Creates a file and writes values from our three lists</span>
+<span class="k">if</span> <span class="n">dates</span> <span class="o">!=</span> <span class="p">[]:</span> <span class="c"># Confirms that Google Trends data exists before creating the csv file</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones_Modified/&quot;</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">&quot;_gtrends.csv&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">lineterminator</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+        <span class="c"># Writes a header row with the titles: Date, Query, Price</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&#39;Date&#39;</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;Price&quot;</span><span class="p">])</span>
+        <span class="c"># Writes a row for each value of date, value, and price</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">prices</span><span class="p">):</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="c"># Closes and saves the file</span>
+        <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s">&quot;Failed to get data for &quot;</span> <span class="o">+</span> <span class="n">queries</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+    
+<span class="c"># View contents of csv file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;./data/raw/DowJones_Modified/&quot;</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">&quot;_gtrends.csv&quot;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">print</span> <span class="nb">file</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Date,American Express,Price
+
+2004-01-09,72,
+
+2004-01-16,72,
+
+2004-01-23,68,
+
+2004-01-30,65,
+
+2004-02-06,67,53.06
+
+2004-02-13,68,53.65
+
+2004-02-20,75,53.16
+
+2004-02-27,68,53.42
+
+2004-03-05,77,52.77
+
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<h1 id="final-script-data_gathering.py">Final Script: data_gathering.py</h1>
+<p>Awesome! As you can see, we have the Google Trends data and stock data side-by-side for &quot;American Express&quot;. Now we can write a full script &quot;data_gathering.py&quot; that automates the process for all search queries. The result is many different csv files created for each query. These csv files can easily be read into R dataframes, as seen in the data cleaning step.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[44]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">file</span> <span class="n">script</span><span class="o">/</span><span class="n">data_gathering</span><span class="o">.</span><span class="n">py</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Downloads Google Trends and stock data for search terms related to companies in the Dow Jones Index. </span>
+
+<span class="sd">Creates a csv file with &quot;Date&quot;, &quot;Google Trends value&quot;, and &quot;Price&quot; for each search term.</span>
+
+<span class="sd">Files will be saved in the &quot;../data/raw/Data_Modified&quot; directory.</span>
+
+<span class="sd">Make sure to run &quot;sudo pip install mechanize&quot; before running the code for the first time.</span>
+
+<span class="sd">Data Sources: Google Trends (www.google.com/trends). Yahoo Finance (www.finance.yahoo.com).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c"># Imports all important modules for the program</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">cookielib</span>
+<span class="kn">import</span> <span class="nn">mechanize</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">StringIO</span> <span class="kn">import</span> <span class="n">StringIO</span>
+ 
+    
+<span class="c"># Reads &quot;DowJones_Modified.csv&quot; of stocks and ticker symbols into a pandas dataframe</span>
+<span class="k">def</span> <span class="nf">stocks_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s">&#39;../data/DowJones_Modified.csv&#39;</span><span class="p">):</span>
+    <span class="n">stocks</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">company</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">Company</span>
+    <span class="n">ticker</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">Ticker</span>
+    <span class="k">return</span> <span class="n">stocks</span><span class="p">,</span> <span class="n">company</span><span class="p">,</span> <span class="n">ticker</span>
+<span class="n">stocks</span><span class="p">,</span> <span class="n">companies</span><span class="p">,</span> <span class="n">tickers</span> <span class="o">=</span> <span class="n">stocks_data</span><span class="p">()</span>
+
+
+<span class="c"># Creates a list of lists with search terms for all companies in the format given by inputs</span>
+<span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">queries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
+        <span class="n">queries</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">query</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stocks</span><span class="p">))])</span>
+    <span class="k">return</span> <span class="n">queries</span>       
+<span class="n">queries</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">companies</span><span class="p">,</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;buy &quot;</span> <span class="o">+</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;sell &quot;</span> <span class="o">+</span> <span class="n">tickers</span><span class="p">,</span> <span class="s">&quot;buy &quot;</span> <span class="o">+</span> <span class="n">companies</span><span class="p">,</span> <span class="s">&quot;sell &quot;</span> <span class="o">+</span> <span class="n">companies</span><span class="p">)</span>
+
+
+<span class="c"># Sets up a virtual browser to download Google Trends and stock data</span>
+<span class="n">br</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">Browser</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">browser_setup</span><span class="p">():</span>
+    <span class="c"># Open browser</span>
+    <span class="n">br</span><span class="o">.</span><span class="n">set_handle_robots</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="c"># Create cookie jar</span>
+    <span class="n">cj</span> <span class="o">=</span> <span class="n">cookielib</span><span class="o">.</span><span class="n">LWPCookieJar</span><span class="p">()</span>
+    <span class="n">br</span><span class="o">.</span><span class="n">set_cookiejar</span><span class="p">(</span><span class="n">cj</span><span class="p">)</span>
+    
+    <span class="c"># Act like we&#39;re a real browser</span>
+    <span class="n">br</span><span class="o">.</span><span class="n">addheaders</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;User-agent&#39;</span><span class="p">,</span> <span class="s">&#39;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1&#39;</span><span class="p">)]</span>
+    
+    <span class="c"># Login in to Google</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;https://accounts.google.com/ServiceLogin?hl=en&amp;continue=https://www.google.com/&#39;</span><span class="p">)</span>
+    <span class="n">forms</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">ParseResponse</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">form</span><span class="p">[</span><span class="s">&#39;Email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;DherintoR&quot;</span>
+    <span class="n">form</span><span class="p">[</span><span class="s">&#39;Passwd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;forthestars&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">click</span><span class="p">())</span>
+<span class="n">browser_setup</span><span class="p">()</span>
+
+
+<span class="c"># Pulls Yahoo Finance stock data for given ticker from 2004-present</span>
+<span class="k">def</span> <span class="nf">yahoo_finance</span><span class="p">(</span><span class="n">ticker_symbol</span><span class="p">):</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s">&quot;http://ichart.yahoo.com/table.csv?s=&quot;</span>
+    <span class="n">dt_url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&amp;a=</span><span class="si">%s</span><span class="s">&amp;b=</span><span class="si">%s</span><span class="s">&amp;c=</span><span class="si">%s</span><span class="s">&amp;d=</span><span class="si">%s</span><span class="s">&amp;e=</span><span class="si">%s</span><span class="s">&amp;f=</span><span class="si">%s</span><span class="s">&amp;g=d&amp;ignore=.csv&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">ticker_symbol</span><span class="p">,</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;2004&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;0000&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">dt_url</span>
+
+    
+<span class="c"># Create CSV for each stock in stocks list</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">companies</span><span class="p">)):</span>
+    
+    <span class="c"># Get stock data for the stock</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">yahoo_finance</span><span class="p">(</span><span class="n">tickers</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="c"># Opens the Yahoo Finance csv file</span>
+    <span class="n">response1</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">reader1</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response1</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+    <span class="c"># Creates a dictionary that maps dates to closing prices for that day</span>
+    <span class="n">prices_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader1</span><span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">queries</span><span class="p">)):</span>
+        
+        <span class="c"># Split queries list into a format that can be entered into the url                </span>
+        <span class="n">query_split</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">query_params</span> <span class="o">=</span> <span class="s">&#39;%20&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">query_split</span><span class="p">)</span>
+        
+        <span class="c"># Get CSV from Google Trends</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://www.google.com/trends/trendsReport?hl=en-US&amp;q=&#39;</span> <span class="o">+</span> <span class="n">query_params</span> <span class="o">+</span> <span class="s">&#39;&amp;cmpt=q&amp;content=1&amp;export=1&#39;</span><span class="p">)</span> 
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+        
+        <span class="c"># Creates empty lists to be populated with data</span>
+        <span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">prices</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="c"># Populate lists with dates and Google Trends values in the correct formate.</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+            <span class="c"># Looks for the right rows to get data from, ignoring the junk</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">date</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">row</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c"># Takes the date for the Friday of the week and puts it in the correct format</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;[0-9]{4}-[0-9]{2}-[0-9]{2}&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+                <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:],</span> <span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)</span><span class="o">-</span><span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;%Y-%m-</span><span class="si">%d</span><span class="s">&quot;</span><span class="p">)))</span> <span class="c"># Uses last date in time period</span>
+                <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        
+        <span class="c"># Adds stock prices to the corresponding dates found in the Google Trends data</span>
+        <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+            <span class="c"># Tries to add the price for the date from the Google Trends data</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prices_dict</span><span class="p">[</span><span class="n">date</span><span class="p">])</span>
+            <span class="c"># Adds a blank value if the price is not available for the Google Trends date</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">prices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="c"># Sets the filename as the query</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">queries</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+        
+        <span class="c"># Creates a file in &quot;data/raw/DowJones_Modified/&quot; and writes values from our three lists</span>
+        <span class="k">if</span> <span class="n">dates</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;../data/raw/DowJones_Modified/&quot;</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">&quot;_gtrends.csv&quot;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">file</span><span class="p">:</span>
+                <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span> <span class="n">lineterminator</span> <span class="o">=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+                <span class="c"># Writes a header row with the titles: Date, Query, Price</span>
+                <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">&#39;Date&#39;</span><span class="p">,</span> <span class="n">queries</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">n</span><span class="p">],</span> <span class="s">&quot;Price&quot;</span><span class="p">])</span>
+                <span class="c"># Writes a row for each value of date, value, and price</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">prices</span><span class="p">):</span>
+                    <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                <span class="c"># Closes and saves the file</span>
+                <span class="nb">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&quot;Failed to get data for &quot;</span> <span class="o">+</span> <span class="n">queries</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stdout">
+<pre>
+Overwriting script/data_gathering.py
+
+</pre>
+</div>
+</div>
 
 </div>
 </div>
@@ -2335,7 +2706,7 @@ In&nbsp;[]:
     <section>
         <ul class="list-group list-group-flush">
                 <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i>Social</h4></li>
-                    <li class="list-group-item"><a href="https://github.com/hiro722722/Stat-Project-2.git"><i
+                    <li class="list-group-item"><a href="https://github.com/jodreen/googletrends-stocks"><i
                             class="fa fa-view on github-square fa-lg"></i>View on Github
                     </a></li>
 
@@ -2373,7 +2744,7 @@ In&nbsp;[]:
    <div class="container">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 Hiroto Udagawa
+         <div class="col-xs-10">&copy; 2014 Jordeen Chang
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>              <p><small>  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
@@ -2388,10 +2759,10 @@ In&nbsp;[]:
 <script src="http://code.jquery.com/jquery.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://hiro722722.github.io/Stat-Project-2/theme/js/bootstrap.min.js"></script>
+<script src="http://jodreen.github.io/googletrends-stocks/theme/js/bootstrap.min.js"></script>
 
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://hiro722722.github.io/Stat-Project-2/theme/js/respond.min.js"></script>
+<script src="http://jodreen.github.io/googletrends-stocks/theme/js/respond.min.js"></script>
 
 </body>
 </html>
