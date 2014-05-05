@@ -1840,7 +1840,7 @@ Google Trends and Stocks Relationship - Data Analysis Project            </a>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[1]:
+In&nbsp;[2]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">bash</span>
@@ -1879,6 +1879,7 @@ data
 mkdir: cannot create directory ‘./script’: File exists
 mkdir: cannot create directory ‘./data’: File exists
 mkdir: cannot create directory ‘./data/raw’: File exists
+mkdir: cannot create directory ‘./data/cleaned’: File exists
 mkdir: cannot create directory ‘./data/simulated’: File exists
 mkdir: cannot create directory ‘./visualizations’: File exists
 
@@ -1897,7 +1898,7 @@ mkdir: cannot create directory ‘./visualizations’: File exists
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[6]:
+In&nbsp;[3]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">bash</span>
@@ -1914,13 +1915,7 @@ In&nbsp;[6]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
-Downloading/unpacking mechanize
-  Running setup.py egg_info for package mechanize
-    
-Installing collected packages: mechanize
-  Running setup.py install for mechanize
-    
-Successfully installed mechanize
+Requirement already satisfied (use --upgrade to upgrade): mechanize in /usr/local/lib/python2.7/dist-packages
 Cleaning up...
 
 </pre>
@@ -1942,7 +1937,7 @@ Cleaning up...
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[4]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Imports all important modules for the program</span>
@@ -1968,7 +1963,7 @@ In&nbsp;[7]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[8]:
+In&nbsp;[5]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Reads &quot;DowJones_Modified.csv&quot; of stocks and ticker symbols into a pandas dataframe</span>
@@ -2032,7 +2027,7 @@ In&nbsp;[8]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[6]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Creates a list of lists with search terms for all companies in the format given by inputs</span>
@@ -2079,7 +2074,7 @@ In&nbsp;[9]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[10]:
+In&nbsp;[7]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Open browser</span>
@@ -2116,7 +2111,7 @@ In&nbsp;[10]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[11]:
+In&nbsp;[8]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Split queries list into a format that can be entered into the url       </span>
@@ -2149,11 +2144,11 @@ American Express
 []
 [&apos;Interest over time&apos;]
 [&apos;Week&apos;, &apos;american express&apos;]
-[&apos;2004-01-04 - 2004-01-10&apos;, &apos;72&apos;]
-[&apos;2004-01-11 - 2004-01-17&apos;, &apos;72&apos;]
-[&apos;2004-01-18 - 2004-01-24&apos;, &apos;68&apos;]
+[&apos;2004-01-04 - 2004-01-10&apos;, &apos;71&apos;]
+[&apos;2004-01-11 - 2004-01-17&apos;, &apos;74&apos;]
+[&apos;2004-01-18 - 2004-01-24&apos;, &apos;70&apos;]
 [&apos;2004-01-25 - 2004-01-31&apos;, &apos;65&apos;]
-[&apos;2004-02-01 - 2004-02-07&apos;, &apos;66&apos;]
+[&apos;2004-02-01 - 2004-02-07&apos;, &apos;67&apos;]
 
 </pre>
 </div>
@@ -2171,7 +2166,7 @@ American Express
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[12]:
+In&nbsp;[9]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Reload the page</span>
@@ -2210,7 +2205,7 @@ In&nbsp;[12]:
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
 [&apos;2004-01-09&apos;, &apos;2004-01-16&apos;, &apos;2004-01-23&apos;, &apos;2004-01-30&apos;, &apos;2004-02-06&apos;, &apos;2004-02-13&apos;]
-[&apos;72&apos;, &apos;72&apos;, &apos;68&apos;, &apos;65&apos;, &apos;67&apos;, &apos;68&apos;]
+[&apos;71&apos;, &apos;74&apos;, &apos;70&apos;, &apos;65&apos;, &apos;67&apos;, &apos;67&apos;]
 
 </pre>
 </div>
@@ -2243,7 +2238,7 @@ In&nbsp;[12]:
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[42]:
+In&nbsp;[10]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c">#Example #1: Only Monthly Google Trends Data</span>
@@ -2350,12 +2345,13 @@ sell Cisco
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
 <div class="prompt input_prompt">
-In&nbsp;[39]:
+In&nbsp;[11]:
 </div>
 <div class="input_area box-flex1">
 <div class="highlight-ipynb"><pre class="ipynb"><span class="c"># Create a url that acceses Yahoo Finance historical data from 01-01-2004 to present for tickers[0] = JNJ</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s">&quot;http://ichart.yahoo.com/table.csv?s=&quot;</span>
 <span class="n">dt_url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&amp;a=</span><span class="si">%s</span><span class="s">&amp;b=</span><span class="si">%s</span><span class="s">&amp;c=</span><span class="si">%s</span><span class="s">&amp;d=</span><span class="si">%s</span><span class="s">&amp;e=</span><span class="si">%s</span><span class="s">&amp;f=</span><span class="si">%s</span><span class="s">&amp;g=d&amp;ignore=.csv&#39;</span><span class="o">%</span> <span class="p">(</span><span class="n">tickers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;01&quot;</span><span class="p">,</span> <span class="s">&quot;2004&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;00&quot;</span><span class="p">,</span> <span class="s">&quot;0000&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">dt_url</span>
 
 <span class="c"># Opens the Yahoo Finance csv file</span>
 <span class="n">response1</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">dt_url</span><span class="p">)</span>
@@ -2377,6 +2373,7 @@ In&nbsp;[39]:
 <div class="hbox output_area"><div class="prompt"></div>
 <div class="box-flex1 output_subarea output_stream output_stdout">
 <pre>
+http://ichart.yahoo.com/table.csv?s=AXP&amp;a=01&amp;b=01&amp;c=2004&amp;d=00&amp;e=00&amp;f=0000&amp;g=d&amp;ignore=.csv
 AXP
 [&apos;Date&apos;, &apos;Open&apos;, &apos;High&apos;, &apos;Low&apos;, &apos;Close&apos;, &apos;Volume&apos;, &apos;Adj Close&apos;]
 [&apos;2014-05-02&apos;, &apos;86.77&apos;, &apos;87.31&apos;, &apos;86.41&apos;, &apos;86.93&apos;, &apos;3707400&apos;, &apos;86.93&apos;]
