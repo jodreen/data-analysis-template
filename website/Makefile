@@ -1,9 +1,7 @@
 ##################################################################################
 # Replace below with the corresponding info for your fork of the github repository 
 ##################################################################################
-<<<<<<< HEAD
 GITHUB_REPOSITORY=https://github.com/jodreen/googletrends-stocks
->>>>>>> 6db6961d43b2c2c991b7c5c115b5ad1e642751ac
 ##################################################################################
 
 
