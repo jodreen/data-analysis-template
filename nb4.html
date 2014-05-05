@@ -12991,6 +12991,97 @@ In&nbsp;[7]:
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="visualization">Visualization</h1>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="o">%%</span><span class="k">R</span>
+<span class="c">##creating a list of files in the folder</span>
+<span class="n">list_of_files</span> <span class="o">&lt;-</span> <span class="nb">list</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;~/Desktop/googletrends-stocks/notebooks/data/cleaned/DowJones_Modified&quot;</span><span class="p">)</span>
+<span class="n">normal_cor_list</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">()</span>
+<span class="n">percent_cor_list</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">()</span>
+<span class="n">sell_cor_list</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">()</span>
+<span class="n">ticker_cor_list</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">()</span>
+<span class="n">buy_cor_list</span> <span class="o">&lt;-</span> <span class="n">c</span><span class="p">()</span>
+<span class="n">my_str</span> <span class="o">=</span> <span class="s">&quot;data/cleaned/DowJones_Modified/&quot;</span>
+
+<span class="c">##creating a function to gather all the data</span>
+
+<span class="n">get_all_data</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s">&#39;SP500&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">my_str</span> <span class="o">&lt;&lt;-</span> <span class="s">&#39;data/cleaned/SP500/&#39;</span>
+        <span class="n">list_of_files</span> <span class="o">&lt;&lt;-</span> <span class="nb">list</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;~/Desktop/googletrends-stocks/notebooks/data/cleaned/SP500&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">s</span> <span class="ow">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">)){</span>
+        <span class="c">##opening each file in the folder</span>
+        <span class="n">myStock</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="n">paste</span><span class="p">(</span><span class="n">my_str</span><span class="p">,</span><span class="n">list_of_files</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+        <span class="n">myStock</span> <span class="o">=</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">myStock</span><span class="p">)</span>
+        <span class="n">growth2</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">growth</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c">##adding a column with relative stock prices</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">length</span><span class="p">(</span><span class="n">myStock</span><span class="err">$</span><span class="n">Price</span><span class="p">)){</span>
+            <span class="n">growth</span> <span class="o">=</span> <span class="p">(</span><span class="n">myStock</span><span class="err">$</span><span class="n">Price</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">myStock</span><span class="err">$</span><span class="n">Price</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">myStock</span><span class="err">$</span><span class="n">Price</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>
+            <span class="n">growth2</span><span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="n">growth2</span><span class="p">,</span><span class="n">growth</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="c">##intermediate data cleaning step which should be unnecessary after cleaning is linked</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">myStock</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="nb">next</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ncol</span><span class="p">(</span><span class="n">myStock</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">){</span>
+            <span class="nb">next</span>
+        <span class="p">}</span>
+        <span class="c">##getting rid of key term files, so only normal files remain</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">substr</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;sell&quot;</span><span class="p">){</span>
+            <span class="n">sell_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">myStock</span><span class="p">[,</span><span class="mi">2</span><span class="p">],</span> <span class="n">myStock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]),</span><span class="n">sell_cor_list</span><span class="p">)</span>
+            <span class="nb">next</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">substr</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;buy&quot;</span><span class="p">){</span>
+            <span class="n">buy_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">myStock</span><span class="p">[,</span><span class="mi">2</span><span class="p">],</span> <span class="n">myStock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]),</span><span class="n">buy_cor_list</span><span class="p">)</span>
+            <span class="nb">next</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">toupper</span><span class="p">(</span><span class="n">substr</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="p">(</span><span class="n">substr</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="n">ticker_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">c</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">myStock</span><span class="p">[,</span><span class="mi">2</span><span class="p">],</span> <span class="n">myStock</span><span class="p">[,</span><span class="mi">3</span><span class="p">]),</span><span class="n">ticker_cor_list</span><span class="p">)</span>
+            <span class="nb">next</span>
+        <span class="p">}</span>
+        <span class="n">myStockNew</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">myStock</span><span class="p">,</span> <span class="s">&quot;PriceGrowth&quot;</span><span class="o">=</span> <span class="n">growth2</span><span class="p">)</span>
+        <span class="c">##lists of correlatons for absolute and relative stock price data</span>
+        <span class="n">normal_cor_list</span> <span class="o">&lt;&lt;-</span><span class="n">c</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">myStockNew</span><span class="p">[,</span><span class="mi">2</span><span class="p">],</span> <span class="n">myStockNew</span><span class="p">[,</span><span class="mi">3</span><span class="p">]),</span><span class="n">normal_cor_list</span><span class="p">)</span>
+        <span class="n">percent_cor_list</span> <span class="o">&lt;&lt;-</span><span class="n">c</span><span class="p">(</span><span class="n">cor</span><span class="p">(</span><span class="n">myStockNew</span><span class="p">[,</span><span class="mi">2</span><span class="p">],</span> <span class="n">myStockNew</span><span class="p">[,</span><span class="mi">4</span><span class="p">]),</span><span class="n">percent_cor_list</span><span class="p">)</span>
+        <span class="n">normal_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">normal_cor_list</span><span class="p">)</span>
+        <span class="n">percent_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">percent_cor_list</span><span class="p">)</span>
+        <span class="n">ticker_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">ticker_cor_list</span><span class="p">)</span>
+        <span class="n">sell_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">sell_cor_list</span><span class="p">)</span>
+        <span class="n">buy_cor_list</span> <span class="o">&lt;&lt;-</span> <span class="n">na</span><span class="o">.</span><span class="n">omit</span><span class="p">(</span><span class="n">buy_cor_list</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="k">return</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="n">get_all_data</span><span class="p">(</span><span class="s">&#39;DowJones_Modified&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+<div class="vbox output_wrapper">
+<div class="output vbox">
+
+
+<div class="hbox output_area"><div class="prompt"></div>
+<div class="box-flex1 output_subarea output_stream output_stderr">
+<pre>
+ERROR: Cell magic &#96;%%R&#96; not found.
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="part-1">Part 1</h2>
 <h3 id="google-trend-vs.-price-growth-dow-jones">Google Trend vs. Price Growth (Dow Jones)</h3>
 <p>To begin his analysis, Luc wanted to find some correlation between Google Trends Data and Stock prices. He belived that if he could find a strong enough relationship, he could use this in his investment strategies. He first looked at a correlation between Gtrend Data and Week-to-week chance in share price for each individual stock in the Dow Jones (30 total). He displayed this data in two ways, first through a histogram and the second through a density chart. Initially the data seems to be centered around zero and resembles a roughly normal curve. Furthermore, the spread of the data is extremely small, with a range of roughly 0.2. This means that there is not at all a strong relationship between these two variables.</p>
@@ -14115,7 +14206,7 @@ LQAAAABJRU5ErkJggg==
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="google-trend-vs-price-sp-500">Google Trend vs Price (S&amp;P 500)</h3>
-<p>Next Luc tested the same Google Trend vs Price correlation with the S&amp;P 500 Data to test if the results were parrell with the Dow. Furthremore, the S&amp;P 500 has more data points so this should give us a more accurate distribution. The results showed that the range and distribution of this data was similar to that of the Dow.</p>
+<p>Next Luc tested the same Google Trend vs Price correlation with the S&amp;P 500 Data to test if the results were parallel with the Dow. Furthremore, the S&amp;P 500 has more data points so this should give us a more accurate distribution. The results showed that the range and distribution of this data was similar to that of the Dow.</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
 <div class="input hbox">
