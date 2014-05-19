@@ -2,7 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Google Trends and Stocks Relationship - Data Analysis Project</title><link href="http://jodreen.github.io/googletrends-stocks/" rel="alternate"></link><link href="http://jodreen.github.io/googletrends-stocks/feeds/all.atom.xml" rel="self"></link><id>http://jodreen.github.io/googletrends-stocks/</id><updated>2014-03-04T00:00:00-08:00</updated><entry><title>Project Report</title><link href="http://jodreen.github.io/googletrends-stocks/nb4.html" rel="alternate"></link><updated>2014-03-04T00:00:00-08:00</updated><author><name>Benoit Dherin</name></author><id>tag:jodreen.github.io/googletrends-stocks,2014-03-04:nb4.html</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h1 id="google-trends-and-stock-prices"&gt;Google Trends and Stock Prices&lt;/h1&gt;
-&lt;p&gt;Jordeen Chang, Anshuman Dewangan, Anirudh Kilambi, Hiroto Udagawa&lt;br /&gt;STAT 133&lt;br /&gt;Professor Benoit Dherin 4 May 2014&lt;/p&gt;
+&lt;p&gt;Jordeen Chang, Anshuman Dewangan, Anirudh Kilambi, Hiroto Udagawa&lt;br /&gt;STAT 133 Professor Benoit Dherin 4 May 2014&lt;/p&gt;
+&lt;p&gt;The goal of this project is to find out whether or not there exists a correlation between a company's stock price and its popularity on Google Trends.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell vbox"&gt;
 &lt;div class="input hbox"&gt;
