@@ -21957,7 +21957,7 @@ In&amp;nbsp;[]:
 
 &lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Data Cleaning</title><link href="http://jodreen.github.io/googletrends-stocks/nb2.html" rel="alternate"></link><updated>2014-03-02T00:00:00-08:00</updated><author><name>Benoit Dherin</name></author><id>tag:jodreen.github.io/googletrends-stocks,2014-03-02:nb2.html</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;We will clean up the data in &amp;quot;./data/raw&amp;quot; by removing rows that have missing values. Then we will make sure that all the data in the CSV files are of the same type such that analysis will be easier.&lt;/p&gt;
+&lt;p&gt;We will clean up the data in &amp;quot;./data/raw&amp;quot; by first removing all the rows that have missing values. Then we will make sure that all the data in the CSV files are of the same type such that analysis will be easier.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="google-trends-stock-prices-data-cleaning"&gt;#Google Trends &amp;amp; Stock Prices: Data Cleaning&lt;/h2&gt;
