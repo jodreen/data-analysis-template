@@ -1830,7 +1830,7 @@ Google Trends and Stocks Relationship - Data Analysis Project            </a>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="step-0-contributors">Step #0: Contributors</h3>
 <ul>
-<li>Anshuman Dewangan: Researched all sources for data gathering. Wrote all data gathering code. Authored data gathering ipython notebook. Outlined procedure for other steps of the project.</li>
+<li>Anshuman Dewangan: Researched all sources for data gathering. Though of idea for project and wrote prospectus. Programmed all data gathering code. Authored data gathering ipython notebook. Outlined procedure for other steps of the project.</li>
 </ul>
 </div>
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2069,6 +2069,7 @@ In&nbsp;[6]:
 <li>The data is only securely available to Google users</li>
 </ol>
 <p>These problems arise because Google Trends has no API that allows users to pull data easily, making our lives harder. Therefore, we have create a virtual browser that would allow us to pull csv files directly by authenticating Google using login credentials. Otherwise, there is no direct way to download the csv data through programming code. For ideas on how to do this, we conducted a lot of research and got some major help from our source below.</p>
+<p>See the Bonus section at the end of the notebook for fun problems encountered with the virtual browser.</p>
 <p>Source: https://gist.github.com/tlmaloney/5650699</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
@@ -2340,6 +2341,7 @@ sell Cisco
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="step-10-get-stock-data">Step #10: Get Stock Data</h3>
 <p>Great! We have two lists for our query &quot;American Express&quot;, one with the dates and one with the corresponding Google Trends values. Now, let's try getting stock data on the ticker symbol for American Express (AXP) using the Yahoo Finance API. We'll load a csv with daily stock price data for American Express (AXP) from January 1, 2004 (when Google Trends data begins) to present.</p>
+<p>There are many other available stock modules including ystockquote for Python (https://pypi.python.org/pypi/ystockquote) and quantmod for R (http://www.quantmod.com/). However, after testing each one, Yahoo Finance proved easiest to use and had the widest available data.</p>
 <p>Source: https://code.google.com/p/yahoo-finance-managed/wiki/csvHistQuotesDownload</p>
 </div>
 <div class="cell border-box-sizing code_cell vbox">
@@ -2690,6 +2692,81 @@ Overwriting script/data_gathering.py
 </div>
 </div>
 
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="BONUS!---Fun-with-Google-Trends-Server">BONUS! - Fun with Google Trends Server<a class="anchor-link" href="#BONUS!---Fun-with-Google-Trends-Server">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Creating a virtual browser to bypass Google authentication security was definitely the most challenging part for Luc. Here's a list of exciting problems that he faced as well as how he got around them!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Authenticate into Google</strong>: Google Trends data is only available to Google users. Therefore, we had to create a username and password for Luc and login into the Google Server.</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;https://accounts.google.com/ServiceLogin?hl=en&amp;continue=https://www.google.com/&#39;</span><span class="p">)</span>
+    <span class="n">forms</span> <span class="o">=</span> <span class="n">mechanize</span><span class="o">.</span><span class="n">ParseResponse</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">form</span><span class="p">[</span><span class="s">&#39;Email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;DherintoR&quot;</span>
+    <span class="n">form</span><span class="p">[</span><span class="s">&#39;Passwd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;forthestars&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">click</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Cookie Jar</strong>: Creating a browser did not save the Google credentials we just entered. Therefore, we had to create a cookie jar for our virtual browser to save this data.</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="n">cj</span> <span class="o">=</span> <span class="n">cookielib</span><span class="o">.</span><span class="n">LWPCookieJar</span><span class="p">()</span>
+    <span class="n">br</span><span class="o">.</span><span class="n">set_cookiejar</span><span class="p">(</span><span class="n">cj</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Luc is not the Terminator!</strong>: Automating the browser to pull thousands of queries in seconds seems a bit fishy, and Google immediately recognized that we were a robot. Therefore, we had to add this one-line code to get around that. (Shhh... don't tell Google or else Luc will go to jail!)</li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="input_area box-flex1">
+<div class="highlight-ipynb"><pre class="ipynb"><span class="n">br</span><span class="o">.</span><span class="n">set_handle_robots</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Banned. </strong>: Google Trends has a limit of 1000 queries per 24 hours per Google account... per IP address. After running our program for half of the S&amp;P 500, we of course got banned. Luc had to use his fake email account, his personal email account, his friend's email account, his apartment IP address, his friend's dorm IP address, and the UC Berkeley campus IP address over 3 days to collect all the data needed for the project. Looks like dedication pays off. Way to go Luc!</li>
+</ul>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the end, we got all our data... and built a really bad relationship with Google. Let's hope the investment strategy works, because it looks like Luc won't be getting a job there any time soon!</p>
 </div></p>
             </div>
             <!-- /.entry-content -->
