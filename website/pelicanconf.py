@@ -31,6 +31,7 @@ MENUITEMS = [('Report', 'nb4'),
              ('Data Analysis', 'nb3'),
              ('Data Cleaning', 'nb2'),
              ('Data Gathering', 'nb1'),
+             ('About'),
             ]
 
 DISPLAY_TAGS_ON_SIDEBAR = False
