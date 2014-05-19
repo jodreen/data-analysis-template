@@ -14598,6 +14598,9 @@ In&amp;nbsp;[]:
 
 &lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Data Analysis</title><link href="http://jodreen.github.io/googletrends-stocks/nb3.html" rel="alternate"></link><updated>2014-03-03T00:00:00-08:00</updated><author><name>Benoit Dherin</name></author><id>tag:jodreen.github.io/googletrends-stocks,2014-03-03:nb3.html</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;This notebook contains all the analysis we did on our cleaned data files. For each company, we compared the stock prices with the Google Trends data for various phrases pertaining to the company. We also wanted to see if there was a correlation within the sectors, so we also did analysis based on the company types.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h1 id="Data-Analysis"&gt;Data Analysis&lt;a class="anchor-link" href="#Data-Analysis"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;
 &lt;/div&gt;
 
