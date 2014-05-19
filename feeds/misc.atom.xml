@@ -22362,7 +22362,7 @@ In&amp;nbsp;[21]:
 &lt;h3 id="now-all-our-files-in-.datacleaned-are-formatted-correctly-and-ready-to-be-analyzed"&gt;Now all our files in &amp;quot;./data/cleaned/&amp;quot; are formatted correctly and ready to be analyzed!&lt;/h3&gt;
 &lt;/div&gt;&lt;/p&gt;</summary></entry><entry><title>Data Gathering</title><link href="http://jodreen.github.io/googletrends-stocks/nb1.html" rel="alternate"></link><updated>2014-03-01T00:00:00-08:00</updated><author><name>Benoit Dherin</name></author><id>tag:jodreen.github.io/googletrends-stocks,2014-03-01:nb1.html</id><summary type="html">&lt;p&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;In this notebook, we will be gathering all the data that is needed for our project. We will be using the Yahoo Finance API for the stock prices and use the Google Trends website to find Google Trends values based on different search terms.&lt;/p&gt;
+&lt;p&gt;In this notebook, we will be gathering all the data that is needed for our project using the Yahoo Finance API for the stock prices and Google Trends website to find Google Trends values based on different search terms. Then we will combine the data into a clean CSV file to analyze.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="google-trends-stock-prices-data-gathering"&gt;#Google Trends &amp;amp; Stock Prices: Data Gathering&lt;/h2&gt;
